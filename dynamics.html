@@ -149,9 +149,9 @@
         <!-- СИСТЕМА ВКЛАДОК -->
         <div class="tab-container">
             <div class="tab-buttons">
-                <button class="tab-btn active" onclick="openTab(event, 'tab-short')">📖 Краткий конспект (Лекция)</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-detailed')">📚 Подробный материал</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-homework')">📝 Домашнее задание</button>
+                <button class="tab-btn active" onclick="openTab(this, 'tab-short')">📖 Краткий конспект (Лекция)</button>
+                <button class="tab-btn" onclick="openTab(this, 'tab-detailed')">📚 Подробный материал</button>
+                <button class="tab-btn" onclick="openTab(this, 'tab-homework')">📝 Домашнее задание</button>
             </div>
 
             <!-- ВКЛАДКА 1: КРАТКИЙ КОНСПЕКТ -->
@@ -276,7 +276,7 @@
                     
                     <div class="task-box">
                         <p><strong>Пример 1 (II закон Ньютона):</strong> Тело массой 2 кг движется с ускорением 3 м/с². Какая сила действует на тело?</p>
-                        <button class="btn-reveal" onclick="toggleAnswer('ex1')">Показать решение</button>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex1')">Показать решение</button>
                         <div id="ex1" class="answer-block">
                             <p><strong>Решение:</strong> F = m * a = 2 кг * 3 м/с² = <strong>6 Н.</strong></p>
                         </div>
@@ -284,7 +284,7 @@
 
                     <div class="task-box">
                         <p><strong>Пример 2 (Перегрузка):</strong> Космонавт массой 80 кг находится в ракете, которая стартует с ускорением 20 м/с². Каков вес космонавта? (g = 10 м/с²).</p>
-                        <button class="btn-reveal" onclick="toggleAnswer('ex2')">Показать решение</button>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex2')">Показать решение</button>
                         <div id="ex2" class="answer-block">
                             <p><strong>Решение:</strong> Ракета движется вверх с ускорением, значит возникает перегрузка. P = m * (g + a) = 80 * (10 + 20) = <strong>2400 Н.</strong></p>
                         </div>
