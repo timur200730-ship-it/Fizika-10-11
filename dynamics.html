@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тема 1.2 Основы динамики | СОМК</title>
-        <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#005B96">
     <link rel="apple-touch-icon" href="./img/icon-192.png">
@@ -28,10 +28,10 @@
                     </div>
                 </div>
                 <div class="nav-links">
-                    <a href="index.html">Главная</a>
-                    <a href="mechanics.html">Раздел 1.1</a>
-                    <a href="dynamics.html" class="active">Раздел 1.2</a>
-                    <a href="materials.html">Практика</a>
+                    <a href="./index.html">Главная</a>
+                    <a href="./mechanics.html">Раздел 1.1</a>
+                    <a href="./dynamics.html" class="active">Раздел 1.2</a>
+                    <a href="./materials.html">Практика</a>
                 </div>
             </nav>
         </div>
@@ -39,12 +39,12 @@
 
     <div class="container">
         <div class="breadcrumbs">
-            <a href="index.html">Главная</a> <span>/</span> Раздел 1. Механика <span>/</span> Тема 1.2
+            <a href="./index.html">Главная</a> <span>/</span> Раздел 1. Механика <span>/</span> Тема 1.2
         </div>
 
         <div class="page-header">
             <h1>Тема 1.2: Основы динамики</h1>
-            <p>Законы Ньютона, силы в природе и биомеханика • 6 академических часов</p>
+            <p>Законы Ньютона, силы в природе, статика и биомеханика • 6 академических часов</p>
         </div>
 
         <!-- СИСТЕМА ВКЛАДОК -->
@@ -90,9 +90,60 @@
 
                 <div class="content-section">
                     <h2>4. Сила трения</h2>
-                    <p>Препятствует движению одного тела по поверхности другого.</p>
-                    <div class="formula-block">F<sub>тр</sub> = &mu; * N</div>
-                    <div class="formula-note">где: &mu; (мю) — коэффициент трения, N — сила нормального давления (реакция опоры).</div>
+                    <p><strong>Трение</strong> — процесс механического взаимодействия тел, проявляющийся при их относительном перемещении в плоскости контакта. Природа трения — электромагнитное взаимодействие атомов и молекул соприкасающихся поверхностей (микронеровности + адгезия).</p>
+
+                    <p><strong>Виды трения:</strong></p>
+                    <ul>
+                        <li><strong>Трение покоя</strong> — тело неподвижно относительно опоры.</li>
+                        <li><strong>Трение скольжения</strong> — тело скользит по поверхности.</li>
+                        <li><strong>Трение качения</strong> — тело катится (колесо, шар).</li>
+                    </ul>
+
+                    <p><strong>Сила трения покоя</strong> равна по модулю внешней силе и противоположна ей по направлению (пока тело не сдвинулось):</p>
+                    <div class="formula-block"><span class="vec">F</span><sub>тр</sub> = - <span class="vec">F</span></div>
+                    <div class="formula-note">где <span class="vec">F</span> — внешняя сила, параллельная поверхности (Н)</div>
+
+                    <p>Если внешняя сила превысит <strong>максимальную силу трения покоя</strong>, тело начнёт скользить. Максимальное значение пропорционально силе нормальной реакции опоры (закон Ш. Кулона):</p>
+                    <div class="formula-block">F<sub>тр.max</sub> = &mu; * N</div>
+                    <div class="formula-note">где &mu; (мю) — коэффициент трения (безразмерный), N — сила нормальной реакции опоры (Н)</div>
+
+                    <p><strong>Сила трения скольжения</strong> при небольших скоростях приближённо равна максимальной силе трения покоя и направлена противоположно относительной скорости:</p>
+                    <div class="formula-block">F<sub>тр</sub> &asymp; &mu; * N</div>
+
+                    <p><strong>Сухое трение</strong> — между твёрдыми телами без смазки (бывает статическим и динамическим). <strong>Жидкое трение</strong> — между поверхностями есть жидкость-смазка; оно значительно меньше сухого.</p>
+
+                    <p><strong>Сопротивление воздуха (аэродинамическое сопротивление)</strong> — сила, противодействующая движению тела в атмосфере. Зависит от скорости, формы, размеров тела и плотности воздуха. Обтекаемая форма уменьшает сопротивление. При малых скоростях поток <em>ламинарный</em>, при больших — <em>турбулентный</em>.</p>
+
+                    <div class="visual-container">
+                        <div class="visual-card">
+                            <h4>Силы при скольжении бруска</h4>
+                            <svg viewBox="0 0 400 220" style="width: 100%; height: auto;">
+                                <line x1="30" y1="160" x2="370" y2="160" stroke="#333" stroke-width="3"/>
+                                <g stroke="#333" stroke-width="2">
+                                    <line x1="40" y1="160" x2="30" y2="175"/>
+                                    <line x1="80" y1="160" x2="70" y2="175"/>
+                                    <line x1="120" y1="160" x2="110" y2="175"/>
+                                    <line x1="160" y1="160" x2="150" y2="175"/>
+                                    <line x1="200" y1="160" x2="190" y2="175"/>
+                                    <line x1="240" y1="160" x2="230" y2="175"/>
+                                    <line x1="280" y1="160" x2="270" y2="175"/>
+                                    <line x1="320" y1="160" x2="310" y2="175"/>
+                                    <line x1="360" y1="160" x2="350" y2="175"/>
+                                </g>
+                                <rect x="150" y="100" width="100" height="60" fill="#e0e0e0" stroke="#333" stroke-width="2.5" rx="4"/>
+                                <circle cx="200" cy="130" r="5" fill="#1976D2"/>
+                                <line x1="250" y1="130" x2="340" y2="130" stroke="#1976D2" stroke-width="4" marker-end="url(#arrF)"/>
+                                <text x="300" y="120" font-size="16" fill="#1976D2" font-weight="bold">F</text>
+                                <line x1="150" y1="130" x2="60" y2="130" stroke="#005B96" stroke-width="4" marker-end="url(#arrTr)"/>
+                                <text x="85" y="120" font-size="16" fill="#005B96" font-weight="bold">Fтр</text>
+                                <defs>
+                                    <marker id="arrF" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1976D2"/></marker>
+                                    <marker id="arrTr" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#005B96"/></marker>
+                                </defs>
+                            </svg>
+                            <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">Сила тяги F и сила трения F<sub>тр</sub> направлены противоположно</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="content-section">
@@ -126,6 +177,30 @@
                     <div class="formula-block">v<sub>2</sub> = &radic;(2) * v<sub>1</sub></div>
                 </div>
 
+                <div class="content-section">
+                    <h2>8. Равновесие тел. Момент силы</h2>
+                    <p><strong>Абсолютно твёрдое тело</strong> — физическая модель реального тела, деформации в котором малы (отсутствуют).</p>
+                    <p><strong>Центр тяжести (центр масс)</strong> — точка, к которой приложена равнодействующая всех сил тяжести, действующих на элементы тела. На поверхности Земли точки центра масс и центра тяжести совпадают.</p>
+                    
+                    <p><strong>Виды равновесия:</strong></p>
+                    <ul>
+                        <li><strong>Устойчивое:</strong> при малом отклонении возникает сила, возвращающая тело в исходное положение (шарик на дне ямки).</li>
+                        <li><strong>Неустойчивое:</strong> при малом отклонении возникает сила, уводящая тело ещё дальше от положения равновесия (шарик на вершине горки).</li>
+                        <li><strong>Безразличное:</strong> при отклонении тело остаётся в равновесии в новом положении (шарик на горизонтальной плоскости).</li>
+                    </ul>
+
+                    <p><strong>Момент силы (M)</strong> — физическая величина, характеризующая вращательное действие силы на тело. Равен произведению модуля силы на её плечо.</p>
+                    <div class="formula-block">M = F * l</div>
+                    <div class="formula-note">где: M — момент силы (Н·м), F — сила (Н), l — плечо силы (м) — кратчайшее расстояние от оси вращения до линии действия силы.</div>
+                    <p>Если сила стремится раскручивать тело <em>против часовой стрелки</em>, момент считается <strong>положительным</strong> (M > 0). Если <em>по часовой</em> — <strong>отрицательным</strong> (M < 0).</p>
+
+                    <p><strong>Условия равновесия твёрдого тела:</strong></p>
+                    <ol>
+                        <li>Векторная сумма всех действующих на тело сил равна нулю: <strong>F₁ + F₂ + ... + Fₙ = 0</strong>.</li>
+                        <li>Алгебраическая сумма моментов всех сил относительно любой оси равна нулю: <strong>M₁ + M₂ + ... + Mₙ = 0</strong>.</li>
+                    </ol>
+                </div>
+
                 <!-- ВИЗУАЛ -->
                 <div class="visual-container">
                     <div class="visual-card">
@@ -134,13 +209,10 @@
                             <line x1="50" y1="180" x2="350" y2="180" stroke="#333" stroke-width="2" />
                             <rect x="150" y="130" width="100" height="50" fill="#e0e0e0" stroke="#333" stroke-width="2" rx="5" />
                             <text x="200" y="160" font-size="14" fill="#333" text-anchor="middle">m</text>
-                            <!-- Сила тяжести -->
                             <line x1="200" y1="180" x2="200" y2="230" stroke="#D32F2F" stroke-width="4" marker-end="url(#arrR)" />
                             <text x="210" y="220" font-size="14" fill="#D32F2F">mg</text>
-                            <!-- Сила реакции -->
                             <line x1="200" y1="130" x2="200" y2="80" stroke="#388E3C" stroke-width="4" marker-end="url(#arrG)" />
                             <text x="210" y="100" font-size="14" fill="#388E3C">N</text>
-                            <!-- Сила тяги -->
                             <line x1="250" y1="155" x2="330" y2="155" stroke="#1976D2" stroke-width="4" marker-end="url(#arrB)" />
                             <text x="280" y="145" font-size="14" fill="#1976D2">F</text>
                             <defs>
@@ -245,7 +317,6 @@
                     <p>Со временем выяснилось, что первый закон Ньютона выполняется не во всех системах отсчёта.</p>
                     <p>Проведём опыт. Подвесим над тележкой один шарик, а другой положим внутрь грузового отсека тележки. Запустим установку так, чтобы она двигалась по поверхности стола с постоянной скоростью в одном направлении (рис. 1).</p>
 
-                    <!-- КАРТИНКА 1: Тележка на ровной поверхности -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_01_cart_smooth.svg" alt="Опыт с тележкой на ровной горизонтальной поверхности" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -262,7 +333,6 @@
                     
                     <p>Но когда тележка попадёт на песочную насыпь (рис. 2), то она быстро остановится, так как её скорость быстро уменьшается. При снижении скорости шарики начинают двигаться относительно тележки по инерции. В этом случае изменение скорости шариков не связано с действием на них каких-либо сил.</p>
 
-                    <!-- КАРТИНКА 2: Тележка на песке -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_02_cart_sand.svg" alt="Опыт с тележкой на песочной насыпи" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -295,7 +365,6 @@
 
                     <p><strong>1. Угол между векторами равен 0°.</strong> Если силы параллельны и сонаправлены, то их модули складываются. Для вычислений используют формулу: <strong>F<sub>рез</sub> = F<sub>1</sub> + F<sub>2</sub></strong>.</p>
 
-                    <!-- КАРТИНКА 3: Сложение сонаправленных сил -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_03_add_0.svg" alt="Сложение однонаправленных сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -308,7 +377,6 @@
 
                     <p><strong>2. Угол между векторами равен 180°.</strong> Если силы параллельны и противоположно направлены, то их модули вычитаются. Результирующая сила всегда положительна, так как разность берётся по модулю. Для вычислений используют формулу: <strong>F<sub>рез</sub> = |F<sub>1</sub> − F<sub>2</sub>|</strong>.</p>
 
-                    <!-- КАРТИНКА 4: Сложение противоположных сил -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_04_add_180.svg" alt="Сложение противоположно направленных сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -321,7 +389,6 @@
 
                     <p><strong>3. Угол между векторами равен 90°.</strong> Если силы взаимно перпендикулярны, то их результирующая сила находится по теореме Пифагора. Обе силы являются катетами прямоугольного треугольника, а результирующая сила — гипотенузой. Для вычислений используют формулу: <strong>F<sub>рез</sub> = &radic;(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup>)</strong>.</p>
 
-                    <!-- КАРТИНКА 5: Сложение перпендикулярных сил -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_05_add_90.svg" alt="Сложение взаимно перпендикулярных сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -341,7 +408,6 @@
                     </ul>
                     <p><strong>Принцип суперпозиции:</strong> при действии на тело нескольких сил <span class="vec">F</span><sub>1</sub>, <span class="vec">F</span><sub>2</sub>...<span class="vec">F</span><sub>n</sub>, результирующая (равнодействующая) сила равна <span class="vec">F<sub>p</sub></span> = <span class="vec">F</span><sub>1</sub> + <span class="vec">F</span><sub>2</sub> + ... + <span class="vec">F</span><sub>n</sub>.</p>
                     
-                    <!-- КАРТИНКА 6: Векторная сумма -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_07_vector_sum.svg" alt="Векторная сумма сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -352,7 +418,6 @@
 
                     <p>На рисунке 6 изображён брусок, на который действуют сила тяжести m<span class="vec">g</span>, сила реакции опоры <span class="vec">N</span> и сила трения <span class="vec">F<sub>тр</sub></span>. Красным вектором обозначена результирующая сила <span class="vec">F<sub>рез</sub></span>.</p>
 
-                    <!-- КАРТИНКА 7: Силы на наклонной плоскости -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_06_block_incline.svg" alt="Брусок на наклонной плоскости" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -380,7 +445,6 @@
 
                     <p><strong>Пример:</strong> запишем следствие из второго закона Ньютона для системы «поверхность — блок», изображённой на рисунке 7.</p>
 
-                    <!-- КАРТИНКА 8: Брусок на горизонтальной поверхности -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_09_block_horizontal.svg" alt="Силы, действующие на блок" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -404,7 +468,6 @@
                     <div class="formula-block">F<sub>x</sub> = F<sub>1x</sub> + F<sub>2x</sub> = F<sub>1</sub>cos&alpha;<sub>1</sub> + F<sub>2</sub>cos&alpha;<sub>2</sub></div>
                     <div class="formula-note">где &alpha;<sub>1</sub> и &alpha;<sub>2</sub> — углы между <span class="vec">F</span><sub>1</sub> и <span class="vec">F</span><sub>2</sub> и осью OX.</div>
 
-                    <!-- КАРТИНКА 9: Проекции на ось -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_08_vector_projections.svg" alt="Проекции сил на ось" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -419,7 +482,6 @@
                     <p>Взаимодействие двух тел — это всегда двусторонний процесс.</p>
                     <p><strong>Пример:</strong> рассмотрим процесс вбивания гвоздя молотком (рис. 9). Изменение энергии молотка, позволяет совершать работу по забиванию гвоздя. Металлическая часть молотка воздействует на шляпку гвоздя, что вызывает сопротивление бруска при забивании гвоздя. Эта сила противодействует силе молотка. Поэтому молоток останавливается.</p>
 
-                    <!-- КАРТИНКА 10: Молоток и гвоздь -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_10_hammer.png" alt="Молоток и гвоздь" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -430,7 +492,6 @@
 
                     <p>Проведём опыт. Сцепим два динамометра вместе. Показания динамометров будут одинаковы (рис. 10). Следовательно, динамометры взаимодействуют равными по модулю и противоположно направленными силами.</p>
 
-                    <!-- КАРТИНКА 11: Динамометры -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_11_dynamometers.svg" alt="Два динамометра" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -447,7 +508,6 @@
                     <p>Напомним, что во время работы с динамометром следует избегать перегрузки прибора, чтобы длина пружины не превышала установленный лимит на шкале. Важно также не тянуть пружину динамометра вручную, так как это может привести к повреждению устройства и неправильно измеренному результату.</p>
                     <p>К одному из динамометров прикрепим металлический брусок, а к другому — магнит (рис. 11).</p>
 
-                    <!-- КАРТИНКА 12: Магнит и железо -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_12_magnet.png" alt="Взаимодействие магнита и железа" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -472,7 +532,6 @@
 
                     <p><strong>Пример:</strong> все тела действуют на опору или подвес благодаря гравитации — силе притяжения между телом и Землёй. Под действием силы тяжести опора деформируется: скамейка изгибается, полка под весом книг провисает. Опора стремится вернуть исходное положение, что вызывает силы упругости, с которыми опора воздействует на тело (рис. 12).</p>
 
-                    <!-- КАРТИНКА 13: Брусок на опоре (N и P) -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_13_action_reaction.png" alt="Силы действия и противодействия" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -485,7 +544,6 @@
 
                     <p><strong>Пример:</strong> два тела массами m<sub>1</sub> и m<sub>2</sub> помещены на гладкую горизонтальную плоскость и связаны друг с другом нерастяжимой нитью. Ко второму телу в горизонтальном направлении приложена сила. Определим ускорение обоих тел.</p>
 
-                    <!-- КАРТИНКА 14: Два тела на нити -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_14_two_bodies.svg" alt="Силы, действующие на тела системы" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -539,7 +597,6 @@
                         <li>тело неопределенной формы находится на поверхности шарообразного и однородного тела большого размера и массы (по сравнению с телом неопределенной формы).</li>
                     </ol>
 
-                    <!-- КАРТИНКА 15: Взаимодействие тел -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_15_gravity_bodies.png" alt="Взаимодействие двух тел" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -550,7 +607,6 @@
 
                     <p>Третий закон Ньютона мы используем для расчёта силы тяжести на поверхности Земли или вблизи неё. Поэтому за расстояние между телами берём радиус Земли: R = 6370 км.</p>
 
-                    <!-- КАРТИНКА 16: Яблоко и Земля -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_16_apple_earth.png" alt="Яблоко и Земля" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -583,7 +639,6 @@
                     <p>Практически на Земле ускорение свободного падения на полюсах немного больше (9,832 м/с²), чем на экваторе (9,78 м/с²), так как Земля не имеет форму идеального шара, а на экваторе скорость вращения больше, чем на полюсах. Среднее значение ускорения свободного падения у поверхности Земли равно 9,8 м/с².</p>
                     <p>Ускорение свободного падения у поверхности любого космического тела зависит от массы этого тела и квадрата его радиуса. Таким образом, чем больше масса звезды и чем меньше её размеры, тем больше значение ускорения свободного падения у её поверхности. При помощи формулы расчёта ускорения свободного падения и измерений, проведённых для удалённых объектов, учёные-физики могут определить величину ускорения свободного падения на любой планете или звезде.</p>
 
-                    <!-- КАРТИНКА 17: Солнечная система -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_17_solar_system.png" alt="Солнечная система" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -734,7 +789,6 @@
 
                     <p>Изменение веса связано с инерцией — стремлением тела сохранять своё начальное состояние. Поэтому изменение веса всегда противоположно ускорению движения. Когда ускорение движения направлено вверх, вес тела увеличивается. А если ускорение движения направлено вниз, вес тела уменьшается.</p>
 
-                    <!-- КАРТИНКА 18: Перегрузка -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_18_overload.svg" alt="Изменение веса тела" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -769,7 +823,6 @@
                     <p>Продемонстрируем это на опыте.</p>
                     <p>1. Вес грузика на динамометре приблизительно равен 4 Н. Это сила тяжести, которая равна силе упругости пружины динамометра (рис. 18).</p>
                     
-                    <!-- КАРТИНКА 19A: Динамометр в руке -->
                     <div class="visual-container" style="justify-content: center;">
                         <div class="visual-card" style="max-width: 200px;">
                             <img src="./img/img_dyn_19a_dyn_hand.svg" alt="Динамометр в руке" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
@@ -782,7 +835,6 @@
 
                     <p>2. При отпускании динамометра пружина стремится вернуться в недеформированное состояние. При этом показания динамометра будут меньше веса груза в состоянии покоя (рис. 19).</p>
                     
-                    <!-- КАРТИНКА 19B: Динамометр падает -->
                     <div class="visual-container" style="justify-content: center;">
                         <div class="visual-card" style="max-width: 200px;">
                             <img src="./img/img_dyn_19b_dyn_fall.svg" alt="Динамометр в падении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
@@ -798,7 +850,6 @@
 
                     <p>Проведём опыт. В полиэтиленовый пакет нальём воды, закрутим его верхнюю часть и завяжем узлом (рис. 20).</p>
                     
-                    <!-- КАРТИНКА 20A: Пакет держат -->
                     <div class="visual-container" style="justify-content: center;">
                         <div class="visual-card" style="max-width: 200px;">
                             <img src="./img/img_dyn_20a_bag_hand.svg" alt="Пакет с водой в руке" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
@@ -811,7 +862,6 @@
 
                     <p>Если перевернуть полиэтиленовый пакет, то под действием веса воды он раскрутится, и вода перельётся вниз (рис. 21).</p>
 
-                    <!-- КАРТИНКА 20B: Пакет перевернут -->
                     <div class="visual-container" style="justify-content: center;">
                         <div class="visual-card" style="max-width: 200px;">
                             <img src="./img/img_dyn_20b_bag_flip.svg" alt="Пакет перевернут" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
@@ -824,7 +874,6 @@
 
                     <p>Если подбросить полиэтиленовый пакет, то во время полёта жидкость не будет переливаться в нижнюю часть пакета (рис. 22). Это означает, что она находится в невесомости. В данном случае начальная скорость пакета не была равна нулю. Следовательно, тело может быть невесомым, имея любую начальную скорость.</p>
                     
-                    <!-- КАРТИНКА 20C: Пакет в полете -->
                     <div class="visual-container" style="justify-content: center;">
                         <div class="visual-card" style="max-width: 300px;">
                             <img src="./img/img_dyn_20c_bag_fall.svg" alt="Пакет в полете" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
@@ -843,7 +892,6 @@
                     
                     <p>Если деформации образца малы и являются упругими, величина силы, стремящейся восстановить его геометрические параметры, прямо пропорциональна удлинению.</p>
 
-                    <!-- КАРТИНКА 21: Закон Гука (схема) -->
                     <div class="doc-image-container">
                         <img src="./img/img_dyn_21_hooke_law.svg" alt="Закон Гука" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
@@ -866,6 +914,155 @@
                     <div class="formula-note">где k — коэффициент упругости, определяемый свойствами материала, из которого выполнено тело. Также может определяться геометрическими параметрами тела — его формой и характерными размерами (например, для пружины).</div>
 
                     <p>Знак «минус» показывает, что <span class="vec">F<sub>y</sub></span> направлена противоположно направлению деформирующей силы.</p>
+
+                    <!-- ================= ФАЙЛ 7: СИЛЫ ТРЕНИЯ ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">8. Силы трения</h3>
+
+                    <h4>1. Физическая природа трения</h4>
+                    <p><strong>Трение</strong> — процесс механического взаимодействия физических тел, проявляющийся при их относительном перемещении в плоскости непосредственного контакта.</p>
+                    <p><strong>Физическая природа трения.</strong> Возникновение силы трения обусловлено действием электромагнитных сил взаимодействия атомов или молекул контактирующих тел (при деформации микронеровностей) и непосредственно соприкасающимися областями поверхностей тел (адгезия).</p>
+
+                    <p><strong>Виды трения:</strong></p>
+                    <ol>
+                        <li><strong>Трение покоя</strong> проявляется в том случае, если взаимное перемещение тел отсутствует.</li>
+                        <li><strong>Трение скольжения</strong> проявляется в случае поступательного относительного перемещения тел.</li>
+                        <li><strong>Трение качения</strong> проявляется, если имеет место вращение одного или пары тел.</li>
+                    </ol>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_dyn_22_friction_forces.svg" alt="Силы трения и тяги, действующие на брусок" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            <strong>Внимание!</strong> Картинка не найдена. Сохраните её как <code>img/img_dyn_22_friction_forces.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 24. Силы, действующие на брусок при скольжении: <span class="vec">F</span> — сила тяги, <span class="vec">F<sub>тр</sub></span> — сила трения.</div>
+                    </div>
+
+                    <h4>2. Сила трения покоя</h4>
+                    <p><strong>Сила трения покоя</strong> — сила трения, действующая между двумя телами, неподвижными относительно друг друга.</p>
+                    <p>Если на тело действует сила <span class="vec">F</span>, параллельная поверхности, и при этом тело остаётся неподвижным, то на тело действует сила трения покоя <span class="vec">F<sub>тр</sub></span>, равная по модулю силе <span class="vec">F</span> и противоположная ей по направлению:</p>
+                    <div class="formula-block"><span class="vec">F</span><sub>тр</sub> = - <span class="vec">F</span></div>
+
+                    <p>Если действующая на покоящееся тело сила превысит хотя бы немного максимальную силу трения, то тело начнёт скользить по поверхности.</p>
+
+                    <p><strong>Максимальная сила трения покоя</strong> — наибольшее значение силы трения, при котором скольжение ещё не наступает.</p>
+                    <p>Максимальное значение силы трения покоя пропорционально модулю силы нормальной реакции опоры:</p>
+                    <div class="formula-block">F<sub>тр.max</sub> = &mu; * N</div>
+                    <div class="formula-note">где F<sub>тр.max</sub> — модуль максимальной силы трения покоя (Н), N — сила нормальной реакции опоры (Н), &mu; (мю) — коэффициент пропорциональности (коэффициент трения).</div>
+
+                    <p>Эту зависимость впервые установил Ш. Кулон. Коэффициент трения определяется экспериментально и зависит от материала поверхностей и качества их обработки.</p>
+
+                    <h4>3. Сила трения скольжения</h4>
+                    <p>Сила трения скольжения имеет сложную зависимость от скорости движения. Если относительная скорость движения небольшая, то сила трения скольжения приближённо равна максимальной силе трения покоя и её можно считать постоянной величиной:</p>
+                    <div class="formula-block">F<sub>тр</sub> &asymp; &mu; * N</div>
+                    <p>Сила трения скольжения всегда направлена противоположно относительной скорости соприкасающихся тел.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Сила трения скольжения не зависит от площади контакта, а определяется только материалом поверхностей и силой нормального давления.</p>
+                    </div>
+
+                    <h4>4. Сухое и жидкое трение</h4>
+                    <p>Существует два основных типа трения в зависимости от состояния контактирующих поверхностей: <strong>сухое</strong> и <strong>жидкое</strong> трение.</p>
+                    <p><strong>Сухое трение</strong> описывает взаимодействие двух твёрдых тел, когда они соприкасаются друг с другом без участия какой-либо жидкости. Интенсивность этого вида трения определяется материалами, из которых состоят эти тела, а также условиями их взаимодействия, такими как шероховатость, сила нормального давления и другие факторы. В этом контексте сухое трение бывает статическим (когда объекты не двигаются) и динамическим (когда одно из тел находится в движении относительно другого).</p>
+                    <p><strong>Жидкое трение</strong>, напротив, возникает, когда между двумя поверхностями находится жидкое вещество, действующее как смазка. Это значительно снижает силу трения, что облегчает перемещение объектов относительно друг друга.</p>
+                    <p><strong>Пример:</strong> в различных машинах и системах жидкое трение играет ключевую роль, поскольку масла и смазки уменьшают износ деталей и способствуют увеличению их срока службы, а также повышают общую эффективность функционирования.</p>
+                    <p>Таким образом, различия между сухим и жидким трением касаются не только условий их возникновения, но и их влияния на взаимодействие и движение материалов, что имеет большое значение в области инженерии и технологий.</p>
+
+                    <h4>5. Сопротивление воздуха (аэродинамическое сопротивление)</h4>
+                    <p><strong>Сопротивление воздуха</strong>, или аэродинамическое сопротивление, — это сила, которая противодействует движению объекта в атмосфере.</p>
+                    <p>Эта сила зависит от множества факторов, в том числе от скорости, формы и размеров объекта, а также от плотности окружающего воздуха. При увеличении скорости движения объекта возрастает влияние на молекулы воздуха, что приводит к большему сопротивлению.</p>
+                    <p>Форма объекта критична: обтекаемые конструкции уменьшают силу сопротивления по сравнению с угловатыми или широкими формами. Поэтому многие спортивные машины и самолёты проектируются с учётом аэродинамических характеристик для повышения эффективности.</p>
+                    <p>При движении тела может наблюдаться два типа потоков воздуха в зависимости от скорости тела, которые влияют на его аэродинамические характеристики: <strong>ламинарный</strong> и <strong>турбулентный</strong>.</p>
+                    <p><strong>Ламинарный поток</strong> наблюдается при низкой скорости — слои воздуха движутся параллельно, не перемешиваясь. <strong>Турбулентный поток</strong> возникает при высокой скорости — образуются завихрения, сопротивление резко возрастает.</p>
+
+                    <div class="medical-box">
+                        <h3>🩺 Связь с медициной</h3>
+                        <ul>
+                            <li><strong>Суставы человека.</strong> Внутри суставной сумки находится синовиальная жидкость — естественная «смазка». Коэффициент трения в суставах очень низкий (0,002–0,02), ниже, чем у льда по льду. Это пример <em>жидкого трения</em> в организме.</li>
+                            <li><strong>Износ хрящей.</strong> При недостатке синовиальной жидкости (артроз) трение возрастает, хрящ истирается, появляется боль. Отсюда — необходимость внутрисуставных инъекций.</li>
+                            <li><strong>Аэродинамика в спорте.</strong> Пловцы и велогонщики используют обтекаемые костюмы и позы для снижения сопротивления воздуха/воды.</li>
+                            <li><strong>Медицинские инструменты.</strong> Скальпели, шприцы, катетеры покрывают специальными смазками для снижения трения при введении.</li>
+                            <li><strong>Массаж и растирания.</strong> Механическое трение кожи при массаже улучшает микроциркуляцию крови.</li>
+                        </ul>
+                    </div>
+
+                    <!-- ================= ФАЙЛ 8: СТАТИКА. РАВНОВЕСИЕ ТЕЛ ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">9. Равновесие тел. Момент силы</h3>
+
+                    <h4>1. Виды равновесия тел</h4>
+                    <p>В физике состояние равновесия — состояние физического тела, при котором все его точки покоятся, — определяется: 1) наличием инерциальной системы отсчёта; 2) соотношением между силами, действующими на тело.</p>
+
+                    <p>На рисунке 25 показано направление равнодействующей силы R, действующей на тело, когда оно выведено из состояния устойчивого равновесия.</p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_dyn_23_stable_eq.png" alt="Устойчивое равновесие" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_23_stable_eq.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 25. Устойчивое равновесие.</div>
+                    </div>
+
+                    <p>На рисунке 26 показано направление равнодействующей силы R в состоянии неустойчивого равновесия физического тела.</p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_dyn_24_unstable_eq.png" alt="Неустойчивое равновесие" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_24_unstable_eq.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 26. Неустойчивое равновесие.</div>
+                    </div>
+
+                    <p>На рисунке 27 показано состояние безразличного равновесия.</p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_dyn_25_indifferent_eq.png" alt="Безразличное равновесие" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_25_indifferent_eq.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 27. Безразличное равновесие.</div>
+                    </div>
+
+                    <h4>2. Физическая модель твёрдого тела. Центр тяжести и центр масс</h4>
+                    <p><strong>Абсолютно твёрдое тело</strong> — физическая модель реального тела, деформации в котором малы (отсутствуют).</p>
+                    <p>При решении в инерциальных системах отсчёта различных задач абсолютно твёрдое тело заменяется точкой — центром масс: покоящаяся или двигающаяся с постоянной скоростью по прямой траектории (v=const) точка при выполнении условия равенства нулю геометрической (векторной) суммы всех сил, действующих на тело.</p>
+                    <p>Для твёрдых тел, характеризующихся однородностью и симметрией, их центры масс находятся в центре симметрии (в точке пересечения осей симметрии).</p>
+                    <p>При условии мысленного разделения твёрдого тела на i-е части точка твёрдого тела, к которой приложена «суммарная» сила тяжести, действующая на все части этого тела, называется <strong>центром тяжести</strong>.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>На поверхности Земли точки центра масс и центра тяжести совпадают!</p>
+                    </div>
+
+                    <h4>3. Момент силы относительно оси. Условия равновесия тела в инерциальной системе отсчёта</h4>
+                    <p><strong>Момент M силы F</strong> относительно данной оси — это физическая величина, равная произведению модуля силы F на её плечо l:</p>
+                    <div class="formula-block">M = F * l</div>
+                    <div class="formula-note">где [M] = 1 Н·м.</div>
+
+                    <p><strong>Линией действия силы</strong> называют линию, вдоль которой действует сила.</p>
+                    <p><strong>Плечом силы</strong> называют кратчайшее расстояние от оси вращения до линии действия силы.</p>
+
+                    <p>1. Если сила стремится раскручивать тело против часовой стрелки, то значение момента сил считают положительным: M > 0.</p>
+                    <p>2. Если сила стремится раскручивать тело по часовой стрелке, то значение момента сил считают отрицательным: M < 0.</p>
+
+                    <h4>Условия равновесия твёрдого тела</h4>
+                    <p>Твёрдое тело находится в равновесии при выполнении двух условий.</p>
+                    <ol>
+                        <li>Сумма всех действующих на тело сил равна нулю: F<sub>1</sub> + F<sub>2</sub> + ... + F<sub>N</sub> = 0.</li>
+                        <li>Алгебраическая сумма моментов всех действующих на тело сил относительно любой оси равна нулю: M<sub>1</sub> + M<sub>2</sub> + ... + M<sub>N</sub> = 0.</li>
+                    </ol>
+
+                    <h4>Условие равновесия материальной точки</h4>
+                    <p>Материальная точка находится в равновесии при векторной сумме сил, действующей на неё, равной нулю: <span class="vec">F<sub>1</sub></span> + <span class="vec">F<sub>2</sub></span> + ... = 0.</p>
+
+                    <p>Из определения момента силы следует, что эта физическая величина зависит: 1) от модуля силы, приложенной к телу; 2) от точки приложения данной силы и её направления.</p>
+                    <p>Например, нам никогда не придёт в голову прикрутить дверную ручку в центре двери. Почему дверная ручка располагается в противоположной стороне от дверных петель? Потому что так легче открывать и закрывать дверь. Это доказывает, что действие на дверь зависит от того, где приложена сила.</p>
+
+                    <div class="medical-box">
+                        <h3>🩺 Связь с медициной (биомеханика)</h3>
+                        <ul>
+                            <li><strong>Центр тяжести человека.</strong> В анатомическом положении центр тяжести взрослого человека находится примерно на уровне II крестцового позвонка (чуть выше таза). У женщин он обычно расположен ниже, чем у мужчин.</li>
+                            <li><strong>Устойчивость тела.</strong> Площадь опоры (стопы) и положение центра тяжести определяют устойчивость. При беременности или ношении тяжестей центр тяжести смещается вперед, что требует компенсаторного наклона туловища назад (лордоз).</li>
+                            <li><strong>Суставы как рычаги.</strong> Кости и мышцы образуют рычаги. Например, предплечье — это рычаг второго рода (точка опоры — локоть, сила мышцы — между опорой и грузом в руке). Мышцы прикрепляются близко к суставу, поэтому проигрывают в силе, но выигрывают в скорости и амплитуде движения.</li>
+                            <li><strong>Момент силы в суставах.</strong> При поднятии груза или выполнении упражнений вращающий момент в суставе равен произведению силы мышцы на её плечо. Чем дальше от сустава приложена нагрузка (длиннее плечо), тем больше момент и выше риск травмы.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -873,10 +1070,10 @@
             <div id="tab-homework" class="tab-content">
                 <div class="content-section">
                     <h2>📝 Домашнее задание</h2>
-                    <p>Вам необходимо выполнить тест и задачи для закрепления материала. <strong>Ответы скрыты</strong>, так как вам нужно будет отправить их учителю через специальную форму.</p>
-                    
+                    <p>Выполните тест и задачи для закрепления материала. <strong>Ответы скрыты</strong> — сдайте их через форму.</p>
+
                     <h3>Тест (Выберите один правильный ответ)</h3>
-                    
+
                     <div class="quiz-question">
                         <p>1. Чем отличается вес тела от массы?</p>
                         <label class="quiz-option"><input type="radio" name="q1" value="a"> Вес — это сила (Н), масса — это мера инертности (кг)</label>
@@ -898,44 +1095,49 @@
                         <label class="quiz-option"><input type="radio" name="q3" value="c"> Перпендикулярно деформации</label>
                     </div>
 
-                    <h3>Задачи для самостоятельного решения (решите в тетради)</h3>
-                    
+                    <h3>Задачи для самостоятельного решения</h3>
+
                     <div class="task-box" style="background-color: #fffaf5; border-left-color: #FF9800;">
                         <ol>
                             <li><strong>Задача 1.</strong> Космонавт массой 80 кг находится на Луне (g = 1,6 м/с²). Найдите его вес и массу.</li>
-                            <li><strong>Задача 2.</strong> Лифт движется вниз с ускорением 2 м/с². Найдите вес человека массой 70 кг, находящегося в лифте (g = 10 м/с²).</li>
-                            <li><strong>Задача 3.</strong> Пружина жесткостью 200 Н/м растянулась на 5 см. Найдите силу упругости.</li>
+                            <li><strong>Задача 2.</strong> Лифт движется вниз с ускорением 2 м/с². Найдите вес человека массой 70 кг (g = 10 м/с²).</li>
+                            <li><strong>Задача 3.</strong> Пружина жёсткостью 200 Н/м растянулась на 5 см. Найдите силу упругости.</li>
+                            <li><strong>Задача 4.</strong> Брусок массой 5 кг тянут по горизонтальной поверхности с силой 20 Н. Коэффициент трения 0,3. Найдите ускорение бруска (g = 10 м/с²).</li>
                         </ol>
                     </div>
 
                     <div style="text-align: center; margin-top: 30px;">
-                        <p>После того как решите все задания в тетради, перенесите ответы в форму:</p>
-                        <!-- ЗАМЕНИТЕ ССЫЛКУ НА СВОЮ -->
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_YOUR_FORM_LINK_HERE/viewform" target="_blank" class="google-form-btn">
-                            📤 Сдать домашнее задание (Google Форма)
+                        <!-- ЗАМЕНИТЕ ССЫЛКУ НА РАБОЧУЮ -->
+                        <a href="ВАША_РАБОЧАЯ_ССЫЛКА"
+                           target="_blank"
+                           rel="noopener"
+                           class="google-form-btn">
+                            📤 Сдать домашнее задание
                         </a>
-                        <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">(Ссылка ведет на внешний ресурс. Откроется в новой вкладке).</p>
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">
+                            Откроется в новой вкладке. Введите ФИО, группу и ответы.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="topic-nav">
-            <a href="mechanics.html" class="btn-nav">← Назад: Кинематика</a>
-            <a href="mechanics-conservation.html" class="btn-nav secondary">Следующая тема: Законы сохранения →</a>
+            <a href="./mechanics.html" class="btn-nav">← Назад: Кинематика</a>
+            <a href="./mechanics-conservation.html" class="btn-nav secondary">Следующая тема: Законы сохранения →</a>
         </div>
     </div>
 
     <footer>
         <div class="footer-links">
-            <a href="index.html">Главная</a> | 
-            <a href="materials.html">Материалы (Практика)</a> | 
+            <a href="./index.html">Главная</a> |
+            <a href="./materials.html">Материалы (Практика)</a> |
             <a href="#">Учебник Мякишева 10-11 класс</a>
         </div>
         <p>© 2023 ГБПОУ «Свердловский областной медицинский колледж». Все права защищены.</p>
     </footer>
 
-       <button id="install-pwa-btn" class="install-pwa-btn">📲 Установить приложение</button>
+    <button id="install-pwa-btn" class="install-pwa-btn">📲 Установить приложение</button>
     <script src="./js/app.js"></script>
 </body>
 </html>
