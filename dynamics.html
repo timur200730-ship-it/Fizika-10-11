@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тема 1.2 Основы динамики | СОМК</title>
+    <style>
+        /* --- БАЗОВЫЙ СТИЛЬ --- */
+        :root { --primary: #005B96; --secondary: #00A86B; --bg: #F4F8FA; --text: #333333; --white: #FFFFFF; --border-color: #e0e0e0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* СТИЛЬ ДЛЯ ВЕКТОРОВ */
+        .vec { display: inline-block; position: relative; }
+        .vec::after { content: "→"; position: absolute; top: -0.7em; left: 50%; transform: translateX(-50%) scaleX(0.8); font-size: 0.9em; font-weight: normal; font-family: Arial, sans-serif; }
+
+        .top-bar { background-color: #f8f9fa; border-bottom: 1px solid var(--border-color); padding: 10px 0; font-size: 0.85rem; color: #555; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar strong { color: var(--primary); }
+        
+        header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo-block { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { font-size: 2rem; color: var(--primary); }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-text .college-name { font-weight: bold; font-size: 1.1rem; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
+        .logo-text .discipline { font-size: 0.9rem; color: #666; }
+        .nav-links a { color: var(--text); text-decoration: none; margin-left: 20px; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a.active { color: var(--primary); font-weight: bold; border-bottom: 2px solid var(--primary); }
+
+        /* --- ВКЛАДКИ --- */
+        .breadcrumbs { padding: 20px 0; font-size: 0.9rem; color: #777; }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; }
+        .breadcrumbs span { margin: 0 8px; }
+        .page-header { background: linear-gradient(135deg, var(--primary) 0%, #003366 100%); color: var(--white); padding: 30px 20px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+        .page-header h1 { font-size: 1.8rem; margin-bottom: 10px; }
+        .page-header p { font-size: 1rem; opacity: 0.9; }
+
+        .tab-container { margin-bottom: 30px; }
+        .tab-buttons { display: flex; border-bottom: 2px solid var(--border-color); margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { background: none; border: none; padding: 15px 25px; font-size: 1.05rem; font-weight: bold; color: #777; cursor: pointer; transition: all 0.3s; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+        .tab-btn:hover { color: var(--primary); }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tab-content { display: none; animation: fadeIn 0.5s; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- КОНТЕНТ --- */
+        .content-section { background: var(--white); border-radius: 10px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid var(--primary); }
+        .content-section h2 { color: var(--primary); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        .content-section h3 { color: var(--primary); margin: 35px 0 15px 0; font-size: 1.3rem; border-bottom: 1px dashed #ccc; padding-bottom: 5px; }
+        .content-section p, .content-section li { margin-bottom: 10px; text-align: justify; }
+        .content-section ul, .content-section ol { margin-left: 20px; margin-bottom: 15px; }
+        
+        /* ТАБЛИЦА */
+        .table-wrap { overflow-x: auto; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; background: white; font-size: 0.9rem; }
+        th, td { padding: 10px; border: 1px solid #d0dce4; text-align: center; }
+        th { background: #E3F2FD; color: var(--primary); font-weight: 600; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+
+        /* ФОРМУЛЫ */
+        .formula-block { background: #f4f8fa; border: 1px solid #d0dce4; padding: 15px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; font-size: 1.2rem; margin: 15px 0 5px 0; text-align: center; font-weight: bold; color: #003366; }
+        .formula-note { font-size: 0.9rem; color: #555; text-align: center; margin-bottom: 20px; font-family: 'Segoe UI', sans-serif; font-style: italic; background: #fff; padding: 5px; border-radius: 5px; }
+
+        /* ВИЗУАЛ */
+        .visual-container { display: flex; flex-wrap: wrap; gap: 20px; margin: 25px 0; align-items: center; justify-content: center; }
+        .visual-card { flex: 1; min-width: 200px; max-width: 250px; background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .visual-card h4 { margin-top: 0; color: var(--primary); font-size: 0.95rem; }
+        
+        /* КАРТИНКИ */
+        .doc-image-container { text-align: center; margin: 25px 0; background: #fdfdfd; padding: 15px; border-radius: 8px; border: 1px dashed #ccc; }
+        .doc-image-container img { max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .doc-image-caption { font-size: 0.85rem; color: #666; margin-top: 10px; font-style: italic; }
+
+        /* БЛОКИ */
+        .medical-box { background-color: #E8F5E9; border-left: 5px solid var(--secondary); padding: 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+        .medical-box h3 { color: #1B5E20; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .experiment-box { background-color: #E3F2FD; border-left: 5px solid #2196F3; padding: 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+        .experiment-box h3 { color: #0D47A1; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .task-box { background-color: #FFF3E0; border-left: 5px solid #FF9800; padding: 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+        .task-box h3 { color: #E65100; margin-top: 0; }
+        
+        /* ШПАРГАЛКА */
+        .practice-cheatsheet { background-color: #F3E5F5; border-left: 5px solid #9C27B0; padding: 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+        .practice-cheatsheet h3 { color: #6A1B9A; margin-top: 0; }
+
+        .btn-reveal { background-color: #FF9800; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: background 0.3s; font-size: 0.95rem; }
+        .btn-reveal:hover { background-color: #e68a00; }
+        .answer-block { display: none; background-color: #FFF9C4; border-left: 4px solid #FBC02D; padding: 15px; margin-top: 10px; border-radius: 0 5px 5px 0; }
+        .answer-block p { margin-bottom: 5px; }
+
+        /* КНОПКА ДЛЯ ГУГЛ ФОРМЫ */
+        .google-form-btn { display: inline-block; background-color: #4285F4; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-size: 1.1rem; font-weight: bold; margin-top: 20px; transition: background 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;}
+        .google-form-btn:hover { background-color: #3367D6; }
+
+        .topic-nav { display: flex; justify-content: space-between; margin-top: 30px; }
+        .btn-nav { display: inline-block; padding: 10px 20px; background-color: var(--primary); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
+        .btn-nav:hover { background-color: #004080; }
+        .btn-nav.secondary { background-color: var(--secondary); }
+        .btn-nav.secondary:hover { background-color: #008f5a; }
+        
+        footer { text-align: center; padding: 25px; background-color: #2c3e50; color: #bdc3c7; margin-top: 50px; font-size: 0.85rem; }
+        footer a { color: #ecf0f1; text-decoration: none; margin: 0 10px; }
+        
+        @media (max-width: 768px) { .nav-links { display: none; } .top-bar .container { flex-direction: column; text-align: center; gap: 5px; } .tab-btn { padding: 10px 15px; font-size: 0.95rem; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <span>ГБПОУ «Свердловский областной медицинский колледж»</span>
+            <span>Преподаватель: <strong>Хайретдинов Тимур Азатович</strong></span>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-block">
+                    <div class="logo-icon">🏥</div>
+                    <div class="logo-text">
+                        <span class="college-name">СОМК</span>
+                        <span class="discipline">Физика</span>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Главная</a>
+                    <a href="mechanics.html">Раздел 1.1</a>
+                    <a href="dynamics.html" class="active">Раздел 1.2</a>
+                    <a href="materials.html">Практика</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a> <span>/</span> Раздел 1. Механика <span>/</span> Тема 1.2
+        </div>
+
+        <div class="page-header">
+            <h1>Тема 1.2: Основы динамики</h1>
+            <p>Законы Ньютона, силы в природе и биомеханика • 6 академических часов</p>
+        </div>
+
+        <!-- СИСТЕМА ВКЛАДОК -->
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(event, 'tab-short')">📖 Краткий конспект (Лекция)</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-detailed')">📚 Подробный материал</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-homework')">📝 Домашнее задание</button>
+            </div>
+
+            <!-- ВКЛАДКА 1: КРАТКИЙ КОНСПЕКТ -->
+            <div id="tab-short" class="tab-content active">
+                
+                <div class="content-section">
+                    <h2>1. Взаимодействие тел. Законы Ньютона</h2>
+                    <p><strong>Динамика</strong> — раздел механики, изучающий причины изменения движения тел.</p>
+                    <ul>
+                        <li><strong>I закон (инерции):</strong> Существуют системы отсчета (инерциальные), в которых тело покоится или движется равномерно и прямолинейно, если на него не действуют силы или их действие скомпенсировано.</li>
+                        <li><strong>II закон:</strong> Ускорение тела прямо пропорционально равнодействующей сил и обратно пропорционально массе тела.</li>
+                        <li><strong>III закон:</strong> Силы, с которыми два тела действуют друг на друга, равны по модулю, противоположны по направлению и действуют вдоль прямой, соединяющей эти тела.</li>
+                    </ul>
+                    <div class="formula-block">F = m * a &nbsp;&nbsp;&nbsp; (Второй закон Ньютона)</div>
+                    <div class="formula-note">где: F — равнодействующая сила (Н), m — масса (кг), a — ускорение (м/с²)</div>
+                    <div class="formula-block"><span class="vec">F</span><sub>1</sub> = - <span class="vec">F</span><sub>2</sub> &nbsp;&nbsp;&nbsp; (Третий закон Ньютона)</div>
+                </div>
+
+                <div class="content-section">
+                    <h2>2. Сложение сил (Принцип суперпозиции)</h2>
+                    <p>Силы — векторные величины. Если на тело действует несколько сил, их заменяют равнодействующей.</p>
+                    <ul>
+                        <li><strong>Силы сонаправлены (угол 0°):</strong> F<sub>рез</sub> = F<sub>1</sub> + F<sub>2</sub>.</li>
+                        <li><strong>Силы противоположны (угол 180°):</strong> F<sub>рез</sub> = |F<sub>1</sub> - F<sub>2</sub>|.</li>
+                        <li><strong>Силы перпендикулярны (угол 90°):</strong> F<sub>рез</sub> = &radic;(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup>) (по теореме Пифагора).</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2>3. Сила упругости. Закон Гука</h2>
+                    <p>Возникает при деформации тела и стремится вернуть его в исходное состояние. Направлена противоположно деформации.</p>
+                    <div class="formula-block">F<sub>упр</sub> = - k * &Delta;x</div>
+                    <div class="formula-note">где: k — жесткость (Н/м), &Delta;x (дельта икс) — абсолютное удлинение (м), знак минус указывает на противоположное направление.</div>
+                </div>
+
+                <div class="content-section">
+                    <h2>4. Сила трения</h2>
+                    <p>Препятствует движению одного тела по поверхности другого.</p>
+                    <div class="formula-block">F<sub>тр</sub> = &mu; * N</div>
+                    <div class="formula-note">где: &mu; (мю) — коэффициент трения, N — сила нормального давления (реакция опоры).</div>
+                </div>
+
+                <div class="content-section">
+                    <h2>5. Закон всемирного тяготения</h2>
+                    <p>Все тела во Вселенной притягиваются друг к другу с силой, прямо пропорциональной произведению их масс и обратно пропорциональной квадрату расстояния между ними.</p>
+                    <div class="formula-block">F = G * (m<sub>1</sub> * m<sub>2</sub>) / R<sup>2</sup></div>
+                    <div class="formula-note">где: G — гравитационная постоянная (6,67·10⁻¹¹ Н·м²/кг²), m<sub>1</sub>, m<sub>2</sub> — массы тел (кг), R — расстояние между центрами (м).</div>
+                    <p><strong>Сила тяжести (F<sub>тяж</sub>)</strong> — это сила, с которой Земля притягивает к себе тело.</p>
+                    <div class="formula-block">F<sub>тяж</sub> = m * g</div>
+                    <div class="formula-note">где: g — ускорение свободного падения (на поверхности Земли g ≈ 9,8 м/с²).</div>
+                </div>
+
+                <div class="content-section">
+                    <h2>6. Вес тела. Невесомость. Перегрузки</h2>
+                    <p><strong>Вес тела (P)</strong> — сила, с которой тело давит на опору или подвес. В покое P = m * g.</p>
+                    <p><strong>Перегрузка:</strong> Возникает при движении с ускорением вверх (или торможении вниз).</p>
+                    <div class="formula-block">P = m * (g + a)</div>
+                    <div class="formula-note">Вес увеличивается по сравнению с состоянием покоя.</div>
+                    <p><strong>Частичная невесомость:</strong> Возникает при движении с ускорением вниз (или торможении вверх).</p>
+                    <div class="formula-block">P = m * (g - a)</div>
+                    <p><strong>Невесомость:</strong> Возникает при свободном падении (a = g).</p>
+                    <div class="formula-block">P = 0</div>
+                </div>
+
+                <div class="content-section">
+                    <h2>7. Космические скорости</h2>
+                    <p><strong>Первая космическая скорость (v<sub>1</sub>)</strong> — минимальная скорость для выхода на орбиту вокруг планеты (для Земли ≈ 7,9 км/с).</p>
+                    <div class="formula-block">v<sub>1</sub> = &radic;(g * R)</div>
+                    <div class="formula-note">где: g — ускорение свободного падения, R — радиус планеты.</div>
+                    <p><strong>Вторая космическая скорость (v<sub>2</sub>)</strong> — скорость для преодоления гравитации планеты и выхода в космос (для Земли ≈ 11,2 км/с).</p>
+                    <div class="formula-block">v<sub>2</sub> = &radic;(2) * v<sub>1</sub></div>
+                </div>
+
+                <!-- ВИЗУАЛ -->
+                <div class="visual-container">
+                    <div class="visual-card">
+                        <h4>Векторы сил, действующих на тело</h4>
+                        <svg viewBox="0 0 400 250" style="width: 100%; height: auto;">
+                            <line x1="50" y1="180" x2="350" y2="180" stroke="#333" stroke-width="2" />
+                            <rect x="150" y="130" width="100" height="50" fill="#e0e0e0" stroke="#333" stroke-width="2" rx="5" />
+                            <text x="200" y="160" font-size="14" fill="#333" text-anchor="middle">m</text>
+                            <!-- Сила тяжести -->
+                            <line x1="200" y1="180" x2="200" y2="230" stroke="#D32F2F" stroke-width="4" marker-end="url(#arrR)" />
+                            <text x="210" y="220" font-size="14" fill="#D32F2F">mg</text>
+                            <!-- Сила реакции -->
+                            <line x1="200" y1="130" x2="200" y2="80" stroke="#388E3C" stroke-width="4" marker-end="url(#arrG)" />
+                            <text x="210" y="100" font-size="14" fill="#388E3C">N</text>
+                            <!-- Сила тяги -->
+                            <line x1="250" y1="155" x2="330" y2="155" stroke="#1976D2" stroke-width="4" marker-end="url(#arrB)" />
+                            <text x="280" y="145" font-size="14" fill="#1976D2">F</text>
+                            <defs>
+                                <marker id="arrR" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D32F2F" /></marker>
+                                <marker id="arrG" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#388E3C" /></marker>
+                                <marker id="arrB" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1976D2" /></marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- ШПАРГАЛКА ДЛЯ ПРАКТИКИ -->
+                <div class="practice-cheatsheet">
+                    <h3>🎯 Шпаргалка для Практической работы №2</h3>
+                    <p>Формулы, которые понадобятся для решения задач:</p>
+                    
+                    <p><strong>1. Связь кинематики и динамики:</strong><br>
+                    Если известны путь S и конечная скорость v (начиная с нуля): ускорение <strong>a = v² / (2S)</strong>. Затем по II закону Ньютона: <strong>F = m * a</strong>.</p>
+
+                    <p><strong>2. Сила трения:</strong><br>
+                    <strong>F<sub>тр</sub> = &mu; * N</strong>. Если тело на горизонтальной поверхности, <strong>N = m * g</strong>.</p>
+
+                    <p><strong>3. Система связанных тел (блок):</strong><br>
+                    Ускорение: <strong>a = (m₁ - m₂)g / (m₁ + m₂)</strong>.<br>
+                    Сила натяжения нити: <strong>T = 2m₁m₂g / (m₁ + m₂)</strong>.</p>
+
+                    <p><strong>4. Механическая прочность (давление/напряжение):</strong><br>
+                    <strong>&sigma; = F / S</strong>, где F — сила (Н), S — площадь (м²). Отсюда сила: <strong>F = &sigma; * S</strong>.</p>
+                </div>
+
+                <!-- ПРИМЕРЫ РЕШЕНИЯ ЗАДАЧ -->
+                <div class="content-section" style="border-left-color: #FF9800;">
+                    <h2 style="color: #E65100;">📝 Примеры решения типовых задач</h2>
+                    
+                    <div class="task-box">
+                        <p><strong>Пример 1 (II закон Ньютона):</strong> Тело массой 2 кг движется с ускорением 3 м/с². Какая сила действует на тело?</p>
+                        <button class="btn-reveal" onclick="toggleAnswer('ex1')">Показать решение</button>
+                        <div id="ex1" class="answer-block">
+                            <p><strong>Решение:</strong> F = m * a = 2 кг * 3 м/с² = <strong>6 Н.</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="task-box">
+                        <p><strong>Пример 2 (Перегрузка):</strong> Космонавт массой 80 кг находится в ракете, которая стартует с ускорением 20 м/с². Каков вес космонавта? (g = 10 м/с²).</p>
+                        <button class="btn-reveal" onclick="toggleAnswer('ex2')">Показать решение</button>
+                        <div id="ex2" class="answer-block">
+                            <p><strong>Решение:</strong> Ракета движется вверх с ускорением, значит возникает перегрузка. P = m * (g + a) = 80 * (10 + 20) = <strong>2400 Н.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МЕДИЦИНА И ОПЫТ -->
+                <div class="medical-box">
+                    <h3>🩺 Связь с медициной</h3>
+                    <ul>
+                        <li><strong>Перегрузки:</strong> Летчики и космонавты испытывают перегрузки до 5-9g. Это вызывает отлив крови от головы к ногам и может привести к потере сознания.</li>
+                        <li><strong>Невесомость:</strong> В космосе отсутствие гравитационной нагрузки приводит к потере костной массы (остеопороз) и атрофии мышц.</li>
+                        <li><strong>Ортостатический коллапс:</strong> При резком вставании возникает эффект "частичной невесомости" для крови — она отливает от мозга.</li>
+                        <li><strong>Сила упругости в медицине:</strong> Эластичность сосудов, сухожилий и хрусталика глаза основана на законе Гука.</li>
+                    </ul>
+                </div>
+
+                <div class="experiment-box">
+                    <h3>🧪 Быстрый опыт: Измерение времени реакции</h3>
+                    <p><strong>Ход:</strong> Один студент держит линейку (отметка 0 см между пальцами второго). Отпускает без предупреждения. Второй ловит. Расчет времени: t = &radic;(2h / g). Норма для человека 0,15–0,25 с.</p>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА 2: ПОДРОБНЫЙ МАТЕРИАЛ -->
+            <div id="tab-detailed" class="tab-content">
+                <div class="content-section">
+                    <h2>Подробная теория (для самостоятельного изучения)</h2>
+                    
+                    <!-- ================= ФАЙЛ 1: ПЕРВЫЙ ЗАКОН НЬЮТОНА ================= -->
+                    <h3>1. Инерция. Первый закон Ньютона</h3>
+                    <p><strong>Инерция</strong> — это явление сохранения скорости движения тела при отсутствии внешних воздействий.</p>
+                    
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>По закону инерции, материальная точка сохраняет свою скорость при отсутствии воздействия на него внешних сил или при уравновешивании действия этих сил.</p>
+                        <p>С явлением инерции мы сталкиваемся ежедневно, поэтому необходимо знать её положительные и отрицательные свойства. При ловле мяча нужно отступать по траектории движения, смягчая удар. Иначе можно получить травму. При торможении транспорта необходимо постараться продолжить движение по прежней траектории, чтобы избежать столкновения с деталями транспорта.</p>
+                    </div>
+
+                    <p>До принятия закона инерции древнегреческий учёный Аристотель и его последователи считали, что тело не может двигаться с постоянной скоростью без постоянного воздействия внешних сил.</p>
+                    <p>Первым отверг такие представления Галилео Галилей. Он предположил, что в результате взаимодействий любого тела с другими телами происходят изменения скорости его движения. При отсутствии действия других тел скорость тела не изменяется ни по модулю, ни по направлению. Таким образом, Галилей пришёл к выводу:</p>
+                    <p><em>При отсутствии внешних воздействий тело может не только покоиться, но и двигаться прямолинейно и равномерно.</em></p>
+                    <p>Внешние силы необходимы для компенсации потерь энергии из-за силы трения.</p>
+                    
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>После прекращения воздействий тело движется равномерно и прямолинейно по касательной к первоначальной траектории движения.</p>
+                    </div>
+
+                    <p>На основе вывода Галилея английский учёный Исаак Ньютон сформулировал закон инерции.</p>
+                    <p><strong>Если на тело не действуют силы или их действие скомпенсировано, то данное тело находится в состоянии покоя или равномерного прямолинейного движения.</strong></p>
+                    <p>Закон инерции называют первым законом Ньютона, или первым законом механики.</p>
+
+                    <p><strong>Инертность</strong> — это свойство тела, которое характеризует его способность «сопротивляться» изменению скорости.</p>
+                    <p>Насколько инертным является тело, определяется его массой (в физике вводится термин «инертная масса»).</p>
+
+                    <h3>2. Инерциальные и неинерциальные системы отсчета</h3>
+                    <p>Со временем выяснилось, что первый закон Ньютона выполняется не во всех системах отсчёта.</p>
+                    <p>Проведём опыт. Подвесим над тележкой один шарик, а другой положим внутрь грузового отсека тележки. Запустим установку так, чтобы она двигалась по поверхности стола с постоянной скоростью в одном направлении (рис. 1).</p>
+
+                    <!-- КАРТИНКА 1: Тележка на ровной поверхности -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_01_cart_smooth.svg" alt="Опыт с тележкой на ровной горизонтальной поверхности" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_01_cart_smooth.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 1. Опыт с тележкой на ровной горизонтальной поверхности.</div>
+                    </div>
+
+                    <p>1. Сила тяжести первого шарика уравновешена силой натяжения троса, поэтому нет движения вертикального направления: <span class="vec">T</span><sub>1</sub> + m<sub>1</sub><span class="vec">g</span> = m<sub>1</sub><span class="vec">a</span>.</p>
+                    <p>2. Сила тяжести второго шарика уравновешена силой реакции опоры, поэтому нет движения вертикального направления: <span class="vec">N</span><sub>2</sub> + m<sub>2</sub><span class="vec">g</span> = m<sub>2</sub><span class="vec">a</span>.</p>
+                    <p>3. Сила тяжести всей системы тележки с шариками уравновешена силой реакции опоры (Земли), поэтому нет движения вертикального направления: <span class="vec">N</span><sub>3</sub> + (m<sub>1</sub>+m<sub>2</sub>+m<sub>3</sub>)<span class="vec">g</span> = (m<sub>1</sub>+m<sub>2</sub>+m<sub>3</sub>)<span class="vec">a</span>.</p>
+
+                    <p>В горизонтальном направлении нет сил, которые бы изменяли скорости движения шариков и тележки. Поэтому скорость движения всей системы и каждого элемента в горизонтальном направлении постоянна: v = const.</p>
+                    
+                    <p>Но когда тележка попадёт на песочную насыпь (рис. 2), то она быстро остановится, так как её скорость быстро уменьшается. При снижении скорости шарики начинают двигаться относительно тележки по инерции. В этом случае изменение скорости шариков не связано с действием на них каких-либо сил.</p>
+
+                    <!-- КАРТИНКА 2: Тележка на песке -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_02_cart_sand.svg" alt="Опыт с тележкой на песочной насыпи" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_02_cart_sand.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 2. Опыт с тележкой на песочной насыпи.</div>
+                    </div>
+
+                    <p>В системе отсчёта, связанной с тележкой, движущейся с ускорением (в данном случае с замедлением), закон инерции не выполняется.</p>
+                    <p>Если тело относительно системы отсчёта имеет ускорение даже в отсутствие действия на него других тел или внешних сил, то в такой системе не выполняется закон инерции.</p>
+                    
+                    <p><strong>Первый закон Ньютона:</strong> всегда можно найти инерциальную систему отсчёта, в которой выполняется закон инерции: если на тело не действуют силы или их действие компенсировано, то тело будет находиться в состоянии покоя или двигаться прямолинейно и равномерно.</p>
+                    <p>Первый закон Ньютона устанавливает существование инерциальных систем отсчёта (ИСО).</p>
+                    <p><strong>Неинерциальными</strong> называют системы отсчёта, в которых закон инерции не выполняется.</p>
+                    <p>Одно и то же тело может находиться в состоянии покоя в одной системе отсчёта и двигаться с ускорением в другой системе отсчёта.</p>
+
+                    <p><strong>Пример:</strong> в самолёте, пикирующем вниз с ускорением свободного падения, пилот находится в состоянии покоя в системе отсчёта, связанной с самолётом. Одновременно в системе отсчёта, связанной с Землёй, этот пилот движется вместе с самолетом с ускорением свободного падения.</p>
+                    <p>В большинстве вопросов о движении на поверхности Земли будем принимать Землю за систему отсчёта, потому что нарушения закона инерции для Земли как для системы отсчёта малы. Изучая движение планет будем выбирать для системы отсчета Солнце и звёзды.</p>
+                    <p>Всегда можно найти (выбрать) систему отсчёта, которая с заданной степенью точности является инерциальной.</p>
+
+                    <!-- ================= ФАЙЛ 2: ВТОРОЙ ЗАКОН НЬЮТОНА ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">3. Сложение сил. Второй закон Ньютона</h3>
+                    
+                    <h4>1. Сложение сил</h4>
+                    
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Силы — векторные величины, они характеризуются модулем и направлением. Поэтому при сложении сил применяют законы сложения векторов.</p>
+                    </div>
+
+                    <p><strong>1. Угол между векторами равен 0°.</strong> Если силы параллельны и сонаправлены, то их модули складываются. Для вычислений используют формулу: <strong>F<sub>рез</sub> = F<sub>1</sub> + F<sub>2</sub></strong>.</p>
+
+                    <!-- КАРТИНКА 3: Сложение сонаправленных сил -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_03_add_0.svg" alt="Сложение однонаправленных сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_03_add_0.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 3. Сложение однонаправленных сил.</div>
+                    </div>
+
+                    <p><strong>Пример:</strong> двое детей тянут санки, помогая друг другу. Поэтому результирующая сила всегда больше, чем сила тяги каждого ребёнка, взятая по отдельности.</p>
+
+                    <p><strong>2. Угол между векторами равен 180°.</strong> Если силы параллельны и противоположно направлены, то их модули вычитаются. Результирующая сила всегда положительна, так как разность берётся по модулю. Для вычислений используют формулу: <strong>F<sub>рез</sub> = |F<sub>1</sub> − F<sub>2</sub>|</strong>.</p>
+
+                    <!-- КАРТИНКА 4: Сложение противоположных сил -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_04_add_180.svg" alt="Сложение противоположно направленных сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_04_add_180.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 4. Сложение противоположно направленных сил.</div>
+                    </div>
+
+                    <p><strong>Пример:</strong> если санки тянуть по поверхности, на которой нет ни снега, ни льда, то сила трения действует противоположно силе тяги. Поэтому результирующая сила меньше, чем сила тяги.</p>
+
+                    <p><strong>3. Угол между векторами равен 90°.</strong> Если силы взаимно перпендикулярны, то их результирующая сила находится по теореме Пифагора. Обе силы являются катетами прямоугольного треугольника, а результирующая сила — гипотенузой. Для вычислений используют формулу: <strong>F<sub>рез</sub> = &radic;(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup>)</strong>.</p>
+
+                    <!-- КАРТИНКА 5: Сложение перпендикулярных сил -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_05_add_90.svg" alt="Сложение взаимно перпендикулярных сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_05_add_90.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 5. Сложение взаимно перпендикулярных сил.</div>
+                    </div>
+
+                    <p><strong>Пример:</strong> если ехать на велосипеде при сильном боковом ветре, то велосипед заносит в сторону, так как результирующая сила направлена в сторону от направления движения.</p>
+
+                    <h4>2. Принцип суперпозиции сил</h4>
+                    <p>Сила характеризуется:</p>
+                    <ul>
+                        <li>направлением,</li>
+                        <li>величиной,</li>
+                        <li>точкой приложения (началом вектора), геометрическое положение которой зависит от того, какая именно сила действует на тело.</li>
+                    </ul>
+                    <p><strong>Принцип суперпозиции:</strong> при действии на тело нескольких сил <span class="vec">F</span><sub>1</sub>, <span class="vec">F</span><sub>2</sub>...<span class="vec">F</span><sub>n</sub>, результирующая (равнодействующая) сила равна <span class="vec">F<sub>p</sub></span> = <span class="vec">F</span><sub>1</sub> + <span class="vec">F</span><sub>2</sub> + ... + <span class="vec">F</span><sub>n</sub>.</p>
+                    
+                    <!-- КАРТИНКА 6: Векторная сумма -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_07_vector_sum.svg" alt="Векторная сумма сил" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_07_vector_sum.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Векторная сумма сил (правило параллелограмма).</div>
+                    </div>
+
+                    <p>На рисунке 6 изображён брусок, на который действуют сила тяжести m<span class="vec">g</span>, сила реакции опоры <span class="vec">N</span> и сила трения <span class="vec">F<sub>тр</sub></span>. Красным вектором обозначена результирующая сила <span class="vec">F<sub>рез</sub></span>.</p>
+
+                    <!-- КАРТИНКА 7: Силы на наклонной плоскости -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_06_block_incline.svg" alt="Брусок на наклонной плоскости" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_06_block_incline.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 6. Силы, действующие на брусок на наклонной плоскости.</div>
+                    </div>
+
+                    <h4>3. Второй закон Ньютона</h4>
+                    <p>Обобщение экспериментальных фактов по выявлению взаимосвязи между ускорением и вызывающей его силой является основанием второго закона Ньютона.</p>
+                    <p><strong>Формулировка второго закона Ньютона:</strong> ускорение тела прямо пропорционально равнодействующей сил, действующих на тело, и обратно пропорционально массе тела.</p>
+                    <p>Математическое выражение:</p>
+                    <div class="formula-block"><span class="vec">a</span> = <span class="vec">F<sub>p</sub></span> / m</div>
+                    <div class="formula-note">где: <span class="vec">F<sub>p</sub></span> — равнодействующая сил, m — масса тела.</div>
+                    
+                    <p>Масса m, входящая в формулировку второго закона Ньютона, называется <strong>инертной массой</strong>.</p>
+                    <p>На практике при решении задач удобнее использовать следующую форму второго закона Ньютона.</p>
+                    <p>Равнодействующая сил, приложенных к телу, прямо пропорциональна произведению массы тела на его ускорение:</p>
+                    <div class="formula-block"><span class="vec">F<sub>p</sub></span> = m * <span class="vec">a</span></div>
+
+                    <p>Равнодействующая сил — векторная сумма сил, приложенных к телу. Её можно найти по принципу суперпозиции сил.</p>
+                    <p>Если на тело действуют силы <span class="vec">F</span><sub>1</sub>, <span class="vec">F</span><sub>2</sub>, …, то результирующая сила есть векторная сумма этих сил:</p>
+                    <div class="formula-block"><span class="vec">F<sub>p</sub></span> = <span class="vec">F</span><sub>1</sub> + <span class="vec">F</span><sub>2</sub> + …</div>
+                    <p>а тело приобретает ускорение, которое вызвано действием одной силы, равной по модулю и направлению вектору результирующей (или равнодействующей) силы <span class="vec">F<sub>p</sub></span>.</p>
+
+                    <p><strong>Пример:</strong> запишем следствие из второго закона Ньютона для системы «поверхность — блок», изображённой на рисунке 7.</p>
+
+                    <!-- КАРТИНКА 8: Брусок на горизонтальной поверхности -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_09_block_horizontal.svg" alt="Силы, действующие на блок" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_09_block_horizontal.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 7. Силы, действующие на блок (горизонтальная поверхность).</div>
+                    </div>
+
+                    <p>В горизонтальном направлении на блок действуют силы <span class="vec">F</span> и <span class="vec">F<sub>тр</sub></span>, тело имеет ускорение <span class="vec">a</span>.</p>
+                    <p>В вертикальном направлении на блок действуют силы m<span class="vec">g</span> и <span class="vec">N</span>, но ускорения нет (тело движется по поверхности, а не «улетает» вверх). Следствия из второго закона Ньютона:</p>
+                    <ul>
+                        <li>в векторном виде: <span class="vec">F</span> + <span class="vec">F<sub>тр</sub></span> + m<span class="vec">g</span> + <span class="vec">N</span> = m<span class="vec">a</span>;</li>
+                        <li>в проекциях на оси OX и OY: <br>
+                        OX: F – F<sub>тр</sub> = ma,<br>
+                        OY: N – mg = 0.</li>
+                    </ul>
+
+                    <p>Чтобы рассчитать величину проекции результирующей силы на выбранное направление, требуется определить величины проекций на это направление всех сил, действующих на тело, и сложить их.</p>
+                    
+                    <p><strong>Пример:</strong> величина проекции силы <span class="vec">F</span> на ось OX, где <span class="vec">F</span> = <span class="vec">F</span><sub>1</sub> + <span class="vec">F</span><sub>2</sub> (рис. 8):</p>
+                    <div class="formula-block">F<sub>x</sub> = F<sub>1x</sub> + F<sub>2x</sub> = F<sub>1</sub>cos&alpha;<sub>1</sub> + F<sub>2</sub>cos&alpha;<sub>2</sub></div>
+                    <div class="formula-note">где &alpha;<sub>1</sub> и &alpha;<sub>2</sub> — углы между <span class="vec">F</span><sub>1</sub> и <span class="vec">F</span><sub>2</sub> и осью OX.</div>
+
+                    <!-- КАРТИНКА 9: Проекции на ось -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_08_vector_projections.svg" alt="Проекции сил на ось" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_08_vector_projections.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 8. Проекции сил на ось OX.</div>
+                    </div>
+
+                    <!-- ================= ФАЙЛ 3: ТРЕТИЙ ЗАКОН НЬЮТОНА ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">4. Третий закон Ньютона</h3>
+                    
+                    <p>Взаимодействие двух тел — это всегда двусторонний процесс.</p>
+                    <p><strong>Пример:</strong> рассмотрим процесс вбивания гвоздя молотком (рис. 9). Изменение энергии молотка, позволяет совершать работу по забиванию гвоздя. Металлическая часть молотка воздействует на шляпку гвоздя, что вызывает сопротивление бруска при забивании гвоздя. Эта сила противодействует силе молотка. Поэтому молоток останавливается.</p>
+
+                    <!-- КАРТИНКА 10: Молоток и гвоздь -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_10_hammer.png" alt="Молоток и гвоздь" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_10_hammer.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 9. Изображение гвоздя и молотка.</div>
+                    </div>
+
+                    <p>Проведём опыт. Сцепим два динамометра вместе. Показания динамометров будут одинаковы (рис. 10). Следовательно, динамометры взаимодействуют равными по модулю и противоположно направленными силами.</p>
+
+                    <!-- КАРТИНКА 11: Динамометры -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_11_dynamometers.svg" alt="Два динамометра" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_11_dynamometers.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 10. Изображение динамометров.</div>
+                    </div>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Тела действуют друг на друга с равными по модулю силами и в том случае, если взаимодействие происходит на расстоянии.</p>
+                    </div>
+
+                    <p>Напомним, что во время работы с динамометром следует избегать перегрузки прибора, чтобы длина пружины не превышала установленный лимит на шкале. Важно также не тянуть пружину динамометра вручную, так как это может привести к повреждению устройства и неправильно измеренному результату.</p>
+                    <p>К одному из динамометров прикрепим металлический брусок, а к другому — магнит (рис. 11).</p>
+
+                    <!-- КАРТИНКА 12: Магнит и железо -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_12_magnet.png" alt="Взаимодействие магнита и железа" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_12_magnet.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 11. Изображение взаимодействия магнита и железа.</div>
+                    </div>
+
+                    <p>Сначала динамометры разведём на такое расстояние, при котором силы взаимодействия магнита и металлического бруска практически равны нулю. В данный момент оба динамометра будут показывать «0».</p>
+                    <p>Если начинать сближать динамометры (перемещать один из них или оба сразу), то стрелки динамометров начнут отклоняться. Интересен тот факт, что отклонение от нуля происходит в разные стороны. Это означает, что силы взаимодействия магнита и металлического бруска противоположны по направлению. Показания динамометров в данном случае будут одинаковы.</p>
+                    
+                    <p><strong>Третий закон Ньютона:</strong> Силы взаимодействия двух тел равны по величине, противоположно направлены, и действуют вдоль прямой, соединяющей эти тела:</p>
+                    <div class="formula-block"><span class="vec">F<sub>1</sub></span> = -<span class="vec">F<sub>2</sub></span></div>
+
+                    <p>Знак равенства обозначает, что действие равно противодействию, силы возникают попарно. Знак минуса означает, что силы действуют противоположно направленно, их векторная сумма равна нулю.</p>
+                    <p>Как этот закон применяется для объяснения явлений? Например, метеорит падает на землю, поскольку Земля притягивает его с силой тяжести F=mg. Однако, метеорит притягивает Землю с точно такой же по величине силой. Поскольку масса Земли чрезвычайно велика, её перемещение под действием этой силы пренебрежимо мало.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Силы, возникающие в результате взаимодействия тел, являются силами одной природы.</p>
+                    </div>
+
+                    <p><strong>Пример:</strong> все тела действуют на опору или подвес благодаря гравитации — силе притяжения между телом и Землёй. Под действием силы тяжести опора деформируется: скамейка изгибается, полка под весом книг провисает. Опора стремится вернуть исходное положение, что вызывает силы упругости, с которыми опора воздействует на тело (рис. 12).</p>
+
+                    <!-- КАРТИНКА 13: Брусок на опоре (N и P) -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_13_action_reaction.png" alt="Силы действия и противодействия" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_13_action_reaction.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 12. Изображение сил (действие и противодействие).</div>
+                    </div>
+
+                    <p>Вес тела <span class="vec">P</span> приложен к опоре и направлен вертикально вниз к центру Земли. Противодействует весу сила реакции опоры <span class="vec">N</span>, поэтому она направлена перпендикулярно поверхности опоры.</p>
+
+                    <p><strong>Пример:</strong> два тела массами m<sub>1</sub> и m<sub>2</sub> помещены на гладкую горизонтальную плоскость и связаны друг с другом нерастяжимой нитью. Ко второму телу в горизонтальном направлении приложена сила. Определим ускорение обоих тел.</p>
+
+                    <!-- КАРТИНКА 14: Два тела на нити -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_14_two_bodies.svg" alt="Силы, действующие на тела системы" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_14_two_bodies.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 13. Силы, действующие на тела системы.</div>
+                    </div>
+
+                    <ul>
+                        <li>На рисунке 13 показаны силы, действующие на тела в горизонтальном направлении.</li>
+                        <li>Нить нерастяжима, что означает движение тел с одинаковым ускорением.</li>
+                        <li>Запишем следствие из второго закона Ньютона в векторной форме: <br>
+                            m<sub>1</sub><span class="vec">a</span> = <span class="vec">T</span><sub>1</sub> + m<sub>1</sub><span class="vec">g</span> + <span class="vec">N</span><sub>1</sub>, <br>
+                            m<sub>2</sub><span class="vec">a</span> = <span class="vec">T</span><sub>2</sub> + <span class="vec">F</span> + m<sub>2</sub><span class="vec">g</span> + <span class="vec">N</span><sub>2</sub>.
+                        </li>
+                        <li>Введём ось координат OX. Запишем следствие из второго закона Ньютона в скалярной форме, спроецировав векторы сил и ускорения:
+                            <div class="formula-block">m<sub>1</sub>a = T<sub>1</sub><br>m<sub>2</sub>a = -T<sub>2</sub> + F</div>
+                        </li>
+                        <li>По третьему закону Ньютона <span class="vec">T<sub>1</sub></span> = -<span class="vec">T<sub>2</sub></span> и T<sub>1</sub> = T<sub>2</sub> = T.</li>
+                        <li>Подставим:
+                            <div class="formula-block">m<sub>1</sub>a = T<br>m<sub>2</sub>a = -T + F</div>
+                        </li>
+                        <li>Складывая правые и левые части первого и второго уравнения системы, получим:</li>
+                    </ul>
+                    <div class="formula-block">a · (m<sub>1</sub> + m<sub>2</sub>) = F &nbsp;&nbsp;&nbsp; &rArr; &nbsp;&nbsp;&nbsp; a = F / (m<sub>1</sub> + m<sub>2</sub>)</div>
+
+                    <!-- ================= ФАЙЛ 4: СИЛА ТЯЖЕСТИ. ЗАКОН ВСЕМИРНОГО ТЯГОТЕНИЯ ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">5. Сила тяжести. Закон всемирного тяготения</h3>
+                    
+                    <h4>1. Закон всемирного тяготения</h4>
+                    <p>В современной науке встречающиеся в природе взаимодействия разделяются на три типа:</p>
+                    <ul>
+                        <li>гравитационное,</li>
+                        <li>сильное (ядерное),</li>
+                        <li>электрослабое (объединяет электромагнитное и слабое).</li>
+                    </ul>
+                    <p>Слабое и сильное взаимодействия характерны для описания физических процессов с элементарными частицами и проявляются на расстояниях, где законы Ньютона не применимы (микромир), что и обуславливает их короткодействующий характер.</p>
+                    <p>При описании макроскопических физических явлений электромагнитное взаимодействие описывается законами классической электродинамики и проявляется независимо от слабого.</p>
+                    <p>Гравитационное и электромагнитное взаимодействия являются дальнодействующими: они обнаруживаются на расстояниях, которые «характеризуют» физические явления от молекулярного уровня до движения космических объектов.</p>
+                    <p>Одна из важнейших в природе сил — сила гравитации, или сила тяготения. Она действует на все тела во Вселенной.</p>
+                    <p>Существует миф о том, что Ньютон открыл закон всемирного тяготения после того, как ему на голову упало яблоко. Так это или нет доподлинно неизвестно, но именно Ньютон изучал движение планет вокруг Солнца и открыл математическую формулу для расчета взаимодействия тел определенной массы. Эту формулу мы называем законом всемирного тяготения. Сила взаимодействия двух тел прямо пропорциональна массе каждого из этих тел и обратно пропорциональной квадрату расстояния между центрами этих тел:</p>
+                    
+                    <div class="formula-block">F = G * (m<sub>1</sub> * m<sub>2</sub>) / R<sup>2</sup></div>
+                    <div class="formula-note">где G = 6,67·10<sup>-11</sup> Н·м<sup>2</sup>/кг<sup>2</sup> — гравитационная постоянная, R — расстояние между центрами тел.</div>
+
+                    <p><strong>Физический смысл гравитационной постоянной:</strong> гравитационная постоянная G показывает, с какой силой притягиваются между собой два тела массой 1 кг каждое, расположенные на расстоянии 1 м друг от друга в гравитационном поле.</p>
+                    <p>Для решения задач закон всемирного тяготения применяют, если:</p>
+                    <ol>
+                        <li>тела являются точечными (т. е. размеры тел значительно меньше расстояния между ними);</li>
+                        <li>тела представляют собой два однородных шара;</li>
+                        <li>тело неопределенной формы находится на поверхности шарообразного и однородного тела большого размера и массы (по сравнению с телом неопределенной формы).</li>
+                    </ol>
+
+                    <!-- КАРТИНКА 15: Взаимодействие тел -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_15_gravity_bodies.png" alt="Взаимодействие двух тел" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_15_gravity_bodies.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 14. Случаи применения закона всемирного тяготения.</div>
+                    </div>
+
+                    <p>Третий закон Ньютона мы используем для расчёта силы тяжести на поверхности Земли или вблизи неё. Поэтому за расстояние между телами берём радиус Земли: R = 6370 км.</p>
+
+                    <!-- КАРТИНКА 16: Яблоко и Земля -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_16_apple_earth.png" alt="Яблоко и Земля" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_16_apple_earth.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 15. Взаимодействие Земли и яблока.</div>
+                    </div>
+
+                    <p>Сила притяжения яблока к Земле равна силе притяжения Земли к яблоку по модулю: |<span class="vec">F<sub>я</sub></span>| = |<span class="vec">F<sub>з</sub></span>|.</p>
+                    <p>Силы притяжения между телами равны по модулю, но противоположны по направлению: <span class="vec">F<sub>я</sub></span> = -<span class="vec">F<sub>з</sub></span>.</p>
+                    <p>Значение ускорения Земли, обусловленное притяжением со стороны яблока настолько мало, что при расчёте задач его не учитывают.</p>
+
+                    <h4>Инертная и гравитационная массы</h4>
+                    <p>Введение двух физических понятий для массы — инертная и гравитационная — обусловлено спецификой их измерения.</p>
+                    <p>Запишем следствие из II закона Ньютона (скалярное уравнение): F = m<sub>а</sub>a, где m<sub>а</sub> — инертная масса тела.</p>
+                    <p>Запишем закон всемирного тяготения (скалярное уравнение) для тела, находящегося на поверхности Земли:</p>
+                    <div class="formula-block">F = G * (m<sub>г</sub> * M<sub>з</sub>) / R<sup>2</sup> = m<sub>г</sub> * g</div>
+                    <div class="formula-note">где M<sub>з</sub> — масса Земли, m<sub>г</sub> — гравитационная масса тела, R — радиус Земли, g = G * M<sub>з</sub> / R<sup>2</sup>.</div>
+                    <p>Приравняем формулы, рассматривая свободное падение тела: m<sub>а</sub>a = m<sub>г</sub>g, тогда a = (m<sub>г</sub>/m<sub>а</sub>) * g.</p>
+
+                    <h4>2. Ускорение свободного падения</h4>
+                    <p>Ускорение свободного падения характеризует то, как быстро будет увеличиваться скорость тела при свободном падении. Свободным падением называется ускоренное движение тела в безвоздушном пространстве, при котором на тело действует только сила тяжести.</p>
+                    <p>Ускорение свободного падения в упрощённом виде можно рассчитать по формуле g = F / m, которая получается из формулы F = m * g, где F — сила тяжести либо вес тела в состоянии покоя или равномерного прямолинейного движения, m — масса тела, которое притягивает планета, g — ускорение свободного падения.</p>
+                    
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Если мы объединим обе формулы, тогда получим формулу <strong>g = G * M / R<sup>2</sup></strong>, с помощью которой можно вычислить ускорение свободного падения на любом космическом объекте — на планете или звезде.</p>
+                    </div>
+
+                    <p>Практически на Земле ускорение свободного падения на полюсах немного больше (9,832 м/с²), чем на экваторе (9,78 м/с²), так как Земля не имеет форму идеального шара, а на экваторе скорость вращения больше, чем на полюсах. Среднее значение ускорения свободного падения у поверхности Земли равно 9,8 м/с².</p>
+                    <p>Ускорение свободного падения у поверхности любого космического тела зависит от массы этого тела и квадрата его радиуса. Таким образом, чем больше масса звезды и чем меньше её размеры, тем больше значение ускорения свободного падения у её поверхности. При помощи формулы расчёта ускорения свободного падения и измерений, проведённых для удалённых объектов, учёные-физики могут определить величину ускорения свободного падения на любой планете или звезде.</p>
+
+                    <!-- КАРТИНКА 17: Солнечная система -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_17_solar_system.png" alt="Солнечная система" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_17_solar_system.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 16. Планеты Солнечной системы.</div>
+                    </div>
+
+                    <p><strong>Таблица 1. Ускорение свободного падения и другие характеристики планет Солнечной системы</strong></p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Небесное тело</th>
+                                    <th>Ускорение св. падения, м/с²</th>
+                                    <th>Диаметр, км</th>
+                                    <th>Расстояние до Солнца, млн км</th>
+                                    <th>Масса, кг</th>
+                                    <th>Соотношение с массой Земли</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Меркурий</td><td>3,7</td><td>4878</td><td>58</td><td>3,3·10<sup>23</sup></td><td>0,055</td></tr>
+                                <tr><td>Венера</td><td>8,87</td><td>12103</td><td>108</td><td>4,9·10<sup>24</sup></td><td>0,82</td></tr>
+                                <tr><td>Земля</td><td>9,81</td><td>12756,2</td><td>150</td><td>6,0·10<sup>24</sup></td><td>1</td></tr>
+                                <tr><td>Марс</td><td>3,76</td><td>7942</td><td>228</td><td>6,4·10<sup>23</sup></td><td>0,11</td></tr>
+                                <tr><td>Юпитер</td><td>24,8</td><td>142984</td><td>778</td><td>1,9·10<sup>27</sup></td><td>317,8</td></tr>
+                                <tr><td>Сатурн</td><td>10,4</td><td>120536</td><td>1427</td><td>5,7·10<sup>26</sup></td><td>95,0</td></tr>
+                                <tr><td>Уран</td><td>8,87</td><td>51118</td><td>2871</td><td>8,7·10<sup>25</sup></td><td>14,4</td></tr>
+                                <tr><td>Нептун</td><td>10,15</td><td>49532</td><td>4498</td><td>1,02·10<sup>26</sup></td><td>17,1</td></tr>
+                                <tr><td>Луна</td><td>1,62</td><td>3473,8</td><td>0,384 (до Земли)</td><td>7,35·10<sup>22</sup></td><td>0,0123</td></tr>
+                                <tr><td>Солнце</td><td>274,0</td><td>1391000</td><td>—</td><td>2,0·10<sup>30</sup></td><td>332900</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>Нейтронные звёзды имеют малый диаметр — порядка десятков километров, — а масса их сопоставима с массой Солнца. Поэтому гравитационное поле у них очень сильное.</p>
+                    <p><strong>Пример:</strong> если диаметр нейтронной звезды равен 20 км, а масса её в 1,4 раза больше массы Солнца, тогда ускорение свободного падения будет в 200 000 000 000 раз больше, чем у поверхности Земли. Его величина приблизительно равна 2·10<sup>12</sup> м/с². Значение ускорения свободного падения для нейтронной звезды может достигать значения 7·10<sup>12</sup> м/с².</p>
+
+                    <p><strong>Движение тел под действием силы тяжести подчиняется закону Галилея.</strong></p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Обобщённый закон Галилея</th><th>Вывод</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Падение тел в одинаковых полях тяготения происходит с одинаковым ускорением.</td><td>Значение ускорения свободного падения g в конкретном месте Земли является одинаковым для всех тел.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Ситуация 1:</strong> тело массой m расположено на поверхности Земли (M — масса Земли, R — радиус Земли). Пренебрегаем суточным вращением Земли вокруг своей оси. F = m * g = F<sub>грав. тяготения</sub>; m * g = G * (m * M) / R<sup>2</sup>; <strong>g = G * M / R<sup>2</sup></strong>.</p>
+                    <p><strong>Ситуация 2:</strong> тело массой m расположено на высоте h от поверхности Земли. Пренебрегаем суточным вращением Земли вокруг своей оси. F = m * g = F<sub>грав. тяготения</sub>; m * g = G * (m * M) / (R + h)<sup>2</sup>; <strong>g = G * M / (R + h)<sup>2</sup></strong>.</p>
+
+                    <!-- ================= ФАЙЛ 5: ВЕС ТЕЛА. НЕВЕСОМОСТЬ ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">6. Вес тела. Невесомость. Космические скорости</h3>
+                    
+                    <h4>1. Космические скорости</h4>
+                    <p>Движение искусственных спутников — это движение тел, выведенных человеком на орбиту вокруг небесного тела (планеты, Солнца) и движущихся под действием сил всемирного тяготения.</p>
+                    <p>Классическим примером служат спутники Земли: от первого «Спутника-1» до современных космических аппаратов, таких как МКС или метеоспутники, которые обращаются вокруг планеты. Им на смену приходят межпланетные станции, уходящие к другим небесным телам. Чтобы вывести аппарат на околоземную орбиту, ему необходимо сообщить первую космическую скорость (≈7,9 км/с), позволяющую преодолеть земное притяжение и стать спутником. Для полётов к другим планетам требуется достичь второй космической скорости (≈11,2 км/с), которая навсегда уводит корабль из сферы действия Земли.</p>
+
+                    <p><strong>Первая космическая (круговая) скорость</strong></p>
+                    <ol>
+                        <li>Наименьшая скорость тела, которое вращается в гравитационном поле планеты.</li>
+                        <li>На вращающееся тело (m) действует сила тяготения со стороны планеты (M, R), сообщающая ему центростремительное ускорение v<sup>2</sup>/R (данное утверждение справедливо для инерциальной системы отсчёта).</li>
+                        <li>Второй закон Ньютона для вращающегося тела: G * (m * M) / R<sup>2</sup> = m * v<sup>2</sup> / R. (1)</li>
+                        <li>Формула первой космической скорости (следует из равенства (1)):</li>
+                    </ol>
+                    <div class="formula-block">v<sub>1</sub> = &radic;(G * M / R) = &radic;(g * R)</div>
+                    <div class="formula-note">где g = G * M / R<sup>2</sup> — ускорение свободного падения на планете.</div>
+
+                    <p><strong>Вторая космическая (параболическая) скорость</strong></p>
+                    <ol>
+                        <li>Наименьшая скорость тела, преодолевающего гравитационное поле планеты и движущегося по параболической траектории.</li>
+                        <li>Формула второй космической скорости:</li>
+                    </ol>
+                    <div class="formula-block">v<sub>2</sub> = &radic;(2 * G * M / R) = &radic;(2 * g * R) = &radic;2 * v<sub>1</sub></div>
+                    <p><em>Примечание:</em> Если движение тела происходит на расстоянии h от поверхности планеты, то R в формулах заменяется на (R+h).</p>
+
+                    <h4>2. Вес на различных планетах</h4>
+                    <p>Повседневно мы воспринимаем вес и массу тела как одно и то же. Обе эти величины очень связаны друг с другом, но это не одно и то же. Масса тела зависит от количества молекул и атомов в теле, её обозначают m и измеряют в килограммах. А вес — это сила, с которой тело действует на другие тела в результате гравитации, его обозначают P и измеряют в ньютонах, Н. Вес тела — это сила, с которой тело давит на поверхность или растягивает подвес, на котором оно висит.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Вес тела на Земле одинаков с силой тяжести, если тело находится в состоянии покоя или прямолинейного равномерного движения. Если тело ускоренно движется, тогда значения веса тела и силы тяжести могут отличаться.</p>
+                    </div>
+
+                    <p>Вес тела определяют по формуле P = m * g, где P — вес тела, Н; m — масса тела, кг; g — ускорение свободного падения, м/с².</p>
+                    <p>Устройство, которое используется для определения массы тела, называют весами, хотя на самом деле весы измеряют не массу, а вес тела. При градуировке шкалы весов учитывается, что, если вес тела на Земле равен 9,8 Н, то масса такого тела равна 1 кг. Если бы массу тела попытались определить при помощи весов на космической станции, которая находится в состоянии невесомости, тогда измерить вес тела не удалось бы, так как в этом случае вес тела был бы равен нулю, поскольку тело в состоянии невесомости не давит на поверхность весов. Следовательно, вес тела можно определить в гравитационном поле только тогда, когда тело не находится в состоянии невесомости (в состоянии свободного падения).</p>
+                    <p>В Солнечной системе имеется восемь планет, и для каждой планеты характерна своя величина ускорения свободного падения. Это означает, что на каждой из планет одно и то же тело будет иметь различный вес.</p>
+
+                    <p><strong>Таблица 1. Величина ускорения свободного падения вблизи поверхности различных планет Солнечной системы</strong></p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Небесное тело</th><th>Ускорение свободного падения, м/с²</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Меркурий</td><td>3,7</td></tr>
+                                <tr><td>Венера</td><td>8,87</td></tr>
+                                <tr><td>Земля</td><td>9,8</td></tr>
+                                <tr><td>Марс</td><td>3,7</td></tr>
+                                <tr><td>Юпитер</td><td>24,8</td></tr>
+                                <tr><td>Сатурн</td><td>10,4</td></tr>
+                                <tr><td>Уран</td><td>8,87</td></tr>
+                                <tr><td>Нептун</td><td>10,15</td></tr>
+                                <tr><td>Плутон</td><td>0,66</td></tr>
+                                <tr><td>Луна</td><td>1,62</td></tr>
+                                <tr><td>Солнце</td><td>274,0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>На Земле ускорение свободного падения в 6 раз больше, чем на Луне, поэтому вес космонавта на Луне будет в 6 раз меньше, чем на Земле. Космонавт с массой 120 кг на Земле весит P = 120 · 9,8 = 1176 Н, а на Луне его вес будет P = 120 · 1,6 = 192 Н.</p>
+                    <p>Если нашими обычными весами измерить вес космонавта на Луне, тогда показание на шкале весов было бы не 120 кг, а всего лишь 20 кг. На Солнце ускорение свободного падения почти в 28 раз больше, чем на Земле, поэтому на нём все тела казались бы тяжелее в 28 раз. Если бы мы могли космонавта с массой в 120 кг взвесить на поверхности Солнца, то весы показали бы, что космонавт весит 3355 кг. Конечно, в реальности это сделать мы не смогли бы, так как поверхность Солнца раскалена до температуры примерно 6000°С.</p>
+
+                    <h4>3. Изменение веса при движении</h4>
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Запомни! Масса и вес — это не одно и то же!</p>
+                    </div>
+
+                    <p>Масса зависит от количества вещества в теле. Чем больше атомов и молекул содержится в теле, тем больше его масса. Вес — это сила, с которой тело давит на ту поверхность, на которой оно находится, или сила, с которой тело натягивает подвес, на котором оно висит.</p>
+                    <p><strong>Пример:</strong> масса яблока больше массы яблочного семечка, так как в яблоке больше атомов, чем в яблочном семечке.</p>
+                    <p>На Луне вес тела примерно в 6 раз меньше, чем на Земле, поскольку поле гравитации Луны примерно в 6 раз слабее поля гравитации Земли, и ускорение свободного падения на Луне, соответственно, меньше, чем на Земле.</p>
+                    <p>Вес тела определяют путём умножения массы тела на ускорение свободного падения: P = m * g, где P — вес тела, Н; m — масса тела, кг; g — ускорение свободного падения, м/с².</p>
+                    <p>Таким весом обладают тела, находящиеся в состоянии покоя или равномерного движения. В таком случае вес тела одинаков с силой тяжести: P = F<sub>т</sub>.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Если тело движется ускоренно в вертикальном направлении, тогда возникает изменение веса тела.</p>
+                    </div>
+
+                    <p>Мы ощущаем это так, будто нас «вдавливает» в пол, или так, будто мы «зависаем» в воздухе. Лучше всего это можно ощутить при езде на американских горках или в лифтах высотных зданий, которые резко начинают подъём и спуск.</p>
+                    
+                    <p><strong>Вес увеличивается:</strong></p>
+                    <ul>
+                        <li>когда лифт резко начинает движение вверх, находящиеся в лифте люди испытывают ощущение, будто их «вдавливает» в пол;</li>
+                        <li>когда лифт резко уменьшает скорость движения вниз, тогда находящиеся в лифте люди из-за инерции сильнее «вжимаются» ногами в пол лифта;</li>
+                        <li>когда на американских горках проезжают через нижнюю точку горок, находящиеся в тележке люди испытывают ощущение, будто их «вдавливает» в сиденье.</li>
+                    </ul>
+
+                    <p><strong>Вес уменьшается:</strong></p>
+                    <ul>
+                        <li>при быстрой езде на велосипеде по небольшим пригоркам велосипедист на вершине пригорка испытывает ощущение лёгкости;</li>
+                        <li>когда лифт резко начинает движение вниз, находящиеся в лифте люди ощущают, что уменьшается их давление на пол, возникает ощущение свободного падения;</li>
+                        <li>когда на американских горках проезжают через высшую точку горок, находящиеся в тележке люди испытывают ощущение, будто их «подбрасывает» в воздух;</li>
+                        <li>когда на качелях раскачиваются до наивысшей точки, ощущается, что на короткий момент тело «зависает» в воздухе.</li>
+                    </ul>
+
+                    <p>Изменение веса связано с инерцией — стремлением тела сохранять своё начальное состояние. Поэтому изменение веса всегда противоположно ускорению движения. Когда ускорение движения направлено вверх, вес тела увеличивается. А если ускорение движения направлено вниз, вес тела уменьшается.</p>
+
+                    <!-- КАРТИНКА 18: Перегрузка -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_18_overload.svg" alt="Изменение веса тела" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_18_overload.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 17. Изображение движения и изменение веса тела.</div>
+                    </div>
+
+                    <p>На рисунке 17 красными стрелками изображено направление ускорения движения.</p>
+                    <ol>
+                        <li>Если лифт неподвижен или равномерно движется, то ускорение равно нулю. В этом случае вес человека нормальный, он равен силе тяжести и определяется так: P = m * g.</li>
+                        <li>Если лифт движется ускоренно вверх или уменьшает свою скорость при движении вниз, то ускорение направлено вверх. В этом случае вес человека увеличивается и определяется так: P = m * (g + a). В данном случае для тела наступает состояние <strong>перегрузки</strong>.</li>
+                        <li>Если лифт движется ускоренно вниз или уменьшает свою скорость при движении вверх, то ускорение направлено вниз. В этом случае вес человека уменьшается и определяется так: P = m * (g – a).</li>
+                        <li>Если человек находится в объекте, который свободно падает, то ускорение движения направлено вниз и одинаково с ускорением свободного падения: a = g. В этом случае вес человека равен нулю: P = 0. В этом случае для тела наступает состояние <strong>невесомости</strong>.</li>
+                    </ol>
+
+                    <p><strong>Пример:</strong> масса человека — 80 кг. Человек входит в лифт, чтобы подняться наверх. Ускорение движения лифта составляет 7 м/с². Чему равен вес тела на каждом этапе движения?</p>
+                    <p><strong>Решение:</strong></p>
+                    <ol>
+                        <li>Лифт стоит на месте, и вес человека составляет: P = m * g = 80 * 9,8 = 784 Н.</li>
+                        <li>Лифт начинает двигаться наверх с ускорением 7 м/с², и вес человека увеличивается: P = m * (g + a) = 80 * (9,8 + 7) = 1334 Н.</li>
+                        <li>Лифт набрал скорость и едет равномерно, при этом вес человека составляет: P = m * g = 80 * 9,8 = 784 Н.</li>
+                        <li>Лифт при движении вверх тормозит с отрицательным ускорением (замедлением) 7 м/с², и вес человека уменьшается: P = m * (g − a) = 80 * (9,8 − 7) = 224 Н.</li>
+                        <li>Лифт полностью остановился, вес человека составляет: P = m * g = 80 * 9,8 = 784 Н.</li>
+                    </ol>
+
+                    <h4>4. Невесомость</h4>
+                    <p>Состояние невесомости встречается в ситуациях, когда человек располагается в объекте, который находится в свободном падении. Есть специальные самолёты, которые предназначены для создания состояния невесомости. Они поднимаются на определённую высоту, и после этого самолёт переводится в свободное падение в течение примерно 30 секунд. Во время свободного падения самолёта находящиеся в нём люди ощущают состояние невесомости.</p>
+                    <p>Состояние невесомости ощущают космонавты на орбитальной космической станции, так как она находится в состоянии свободного падения по отношению к Земле. Орбитальная космическая станция непрерывно стремится упасть на Землю, но скорость её движения так велика, что станция всё время попадает мимо Земли. Все тела, находящиеся на орбите Земли, находятся в свободном падении, а скорость их движения одинакова с первой космической скоростью — 7,91 км/с, поэтому они не могут упасть на Землю.</p>
+                    <p>Если тело находится на опоре и движется с ускорением a, направленным к центру Земли, то его вес определяется по формуле: P = m(g − a), где g — ускорение свободного падения.</p>
+                    
+                    <p>Продемонстрируем это на опыте.</p>
+                    <p>1. Вес грузика на динамометре приблизительно равен 4 Н. Это сила тяжести, которая равна силе упругости пружины динамометра (рис. 18).</p>
+                    
+                    <!-- КАРТИНКА 19A: Динамометр в руке -->
+                    <div class="visual-container" style="justify-content: center;">
+                        <div class="visual-card" style="max-width: 200px;">
+                            <img src="img/img_dyn_19a_dyn_hand.svg" alt="Динамометр в руке" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
+                            <div style="display:none; padding: 10px; background: #fff3cd; color: #856404; border-radius: 5px; font-size: 0.8rem;">
+                                Сохраните как <code>img_dyn_19a_dyn_hand.svg</code>.
+                            </div>
+                            <div class="doc-image-caption">Рис. 18. Груз на динамометре в покое.</div>
+                        </div>
+                    </div>
+
+                    <p>2. При отпускании динамометра пружина стремится вернуться в недеформированное состояние. При этом показания динамометра будут меньше веса груза в состоянии покоя (рис. 19).</p>
+                    
+                    <!-- КАРТИНКА 19B: Динамометр падает -->
+                    <div class="visual-container" style="justify-content: center;">
+                        <div class="visual-card" style="max-width: 200px;">
+                            <img src="img/img_dyn_19b_dyn_fall.svg" alt="Динамометр в падении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
+                            <div style="display:none; padding: 10px; background: #fff3cd; color: #856404; border-radius: 5px; font-size: 0.8rem;">
+                                Сохраните как <code>img_dyn_19b_dyn_fall.svg</code>.
+                            </div>
+                            <div class="doc-image-caption">Рис. 19. Динамометр в свободном падении.</div>
+                        </div>
+                    </div>
+
+                    <p>3. В свободном падении динамометр не оказывает воздействия на опору или подвес. Поэтому его вес равен нулю. При движении динамометра и груза с равным ускорением отсутствует взаимодействие между ними.</p>
+                    <p><strong>Невесомость</strong> — состояние, при котором сила взаимодействия тела с опорой или подвесом (вес тела), возникающая в связи с гравитационным притяжением, пренебрежимо мала.</p>
+
+                    <p>Проведём опыт. В полиэтиленовый пакет нальём воды, закрутим его верхнюю часть и завяжем узлом (рис. 20).</p>
+                    
+                    <!-- КАРТИНКА 20A: Пакет держат -->
+                    <div class="visual-container" style="justify-content: center;">
+                        <div class="visual-card" style="max-width: 200px;">
+                            <img src="img/img_dyn_20a_bag_hand.svg" alt="Пакет с водой в руке" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
+                            <div style="display:none; padding: 10px; background: #fff3cd; color: #856404; border-radius: 5px; font-size: 0.8rem;">
+                                Сохраните как <code>img_dyn_20a_bag_hand.svg</code>.
+                            </div>
+                            <div class="doc-image-caption">Рис. 20. Пакет с водой.</div>
+                        </div>
+                    </div>
+
+                    <p>Если перевернуть полиэтиленовый пакет, то под действием веса воды он раскрутится, и вода перельётся вниз (рис. 21).</p>
+
+                    <!-- КАРТИНКА 20B: Пакет перевернут -->
+                    <div class="visual-container" style="justify-content: center;">
+                        <div class="visual-card" style="max-width: 200px;">
+                            <img src="img/img_dyn_20b_bag_flip.svg" alt="Пакет перевернут" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
+                            <div style="display:none; padding: 10px; background: #fff3cd; color: #856404; border-radius: 5px; font-size: 0.8rem;">
+                                Сохраните как <code>img_dyn_20b_bag_flip.svg</code>.
+                            </div>
+                            <div class="doc-image-caption">Рис. 21. Вода переливается вниз.</div>
+                        </div>
+                    </div>
+
+                    <p>Если подбросить полиэтиленовый пакет, то во время полёта жидкость не будет переливаться в нижнюю часть пакета (рис. 22). Это означает, что она находится в невесомости. В данном случае начальная скорость пакета не была равна нулю. Следовательно, тело может быть невесомым, имея любую начальную скорость.</p>
+                    
+                    <!-- КАРТИНКА 20C: Пакет в полете -->
+                    <div class="visual-container" style="justify-content: center;">
+                        <div class="visual-card" style="max-width: 300px;">
+                            <img src="img/img_dyn_20c_bag_fall.svg" alt="Пакет в полете" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="width: 100%;">
+                            <div style="display:none; padding: 10px; background: #fff3cd; color: #856404; border-radius: 5px; font-size: 0.8rem;">
+                                Сохраните как <code>img_dyn_20c_bag_fall.svg</code>.
+                            </div>
+                            <div class="doc-image-caption">Рис. 22. Пакет в полете (состояние невесомости).</div>
+                        </div>
+                    </div>
+
+                    <p>Во время полёта отсутствует опора или подвес, на которые мог воздействовать вес пакета с жидкостью.</p>
+                    <p>Явление невесомости использовалось для тренировки космонавтов в самолётах. Невесомостью обладают объекты в космосе, удалённые от массивных тел, которые могли бы оказывать гравитационное притяжение.</p>
+
+                    <!-- ================= ФАЙЛ 6: СИЛА УПРУГОСТИ. ЗАКОН ГУКА ================= -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">7. Сила упругости. Закон Гука</h3>
+                    
+                    <p>Если деформации образца малы и являются упругими, величина силы, стремящейся восстановить его геометрические параметры, прямо пропорциональна удлинению.</p>
+
+                    <!-- КАРТИНКА 21: Закон Гука (схема) -->
+                    <div class="doc-image-container">
+                        <img src="img/img_dyn_21_hooke_law.svg" alt="Закон Гука" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_dyn_21_hooke_law.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 23. Система сил и изменение размера тела.</div>
+                    </div>
+
+                    <p>На рисунке 23 показаны:</p>
+                    <ul>
+                        <li><strong>l<sub>0</sub></strong> — длина тела в исходном состоянии;</li>
+                        <li><strong>l<sub>1</sub></strong> — длина тела в результате действия силы <span class="vec">F</span>;</li>
+                        <li><strong>&Delta;x = l<sub>1</sub> - l<sub>0</sub></strong> — удлинение тела;</li>
+                        <li><strong><span class="vec">F</span></strong> — внешняя сила, вызывающая изменение длины тела;</li>
+                        <li><strong><span class="vec">F<sub>у</sub></span></strong> — сила упругости, равная по величине <span class="vec">F</span>.</li>
+                    </ul>
+
+                    <p>Закон Гука для проекции силы упругости на координатную ось, параллельную силе упругости:</p>
+                    <div class="formula-block">(F<sub>y</sub>)<sub>x</sub> = -k * &Delta;x</div>
+                    <div class="formula-note">где k — коэффициент упругости, определяемый свойствами материала, из которого выполнено тело. Также может определяться геометрическими параметрами тела — его формой и характерными размерами (например, для пружины).</div>
+
+                    <p>Знак «минус» показывает, что <span class="vec">F<sub>y</sub></span> направлена противоположно направлению деформирующей силы.</p>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА 3: ДОМАШНЕЕ ЗАДАНИЕ -->
+            <div id="tab-homework" class="tab-content">
+                <div class="content-section">
+                    <h2>📝 Домашнее задание</h2>
+                    <p>Вам необходимо выполнить тест и задачи для закрепления материала. <strong>Ответы скрыты</strong>, так как вам нужно будет отправить их учителю через специальную форму.</p>
+                    
+                    <h3>Тест (Выберите один правильный ответ)</h3>
+                    
+                    <div class="quiz-question">
+                        <p>1. Чем отличается вес тела от массы?</p>
+                        <label class="quiz-option"><input type="radio" name="q1" value="a"> Вес — это сила (Н), масса — это мера инертности (кг)</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="b"> Вес измеряется в кг, масса в Н</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="c"> Они ничем не отличаются</label>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p>2. При каком условии возникает перегрузка?</p>
+                        <label class="quiz-option"><input type="radio" name="q2" value="a"> При движении с ускорением вниз</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="b"> При движении с ускорением вверх</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="c"> При свободном падении</label>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p>3. Как направлена сила упругости?</p>
+                        <label class="quiz-option"><input type="radio" name="q3" value="a"> В сторону деформации</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="b"> Противоположно деформации</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="c"> Перпендикулярно деформации</label>
+                    </div>
+
+                    <h3>Задачи для самостоятельного решения (решите в тетради)</h3>
+                    
+                    <div class="task-box" style="background-color: #fffaf5; border-left-color: #FF9800;">
+                        <ol>
+                            <li><strong>Задача 1.</strong> Космонавт массой 80 кг находится на Луне (g = 1,6 м/с²). Найдите его вес и массу.</li>
+                            <li><strong>Задача 2.</strong> Лифт движется вниз с ускорением 2 м/с². Найдите вес человека массой 70 кг, находящегося в лифте (g = 10 м/с²).</li>
+                            <li><strong>Задача 3.</strong> Пружина жесткостью 200 Н/м растянулась на 5 см. Найдите силу упругости.</li>
+                        </ol>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <p>После того как решите все задания в тетради, перенесите ответы в форму:</p>
+                        <!-- ЗАМЕНИТЕ ССЫЛКУ НА СВОЮ -->
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_YOUR_FORM_LINK_HERE/viewform" target="_blank" class="google-form-btn">
+                            📤 Сдать домашнее задание (Google Форма)
+                        </a>
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">(Ссылка ведет на внешний ресурс. Откроется в новой вкладке).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-nav">
+            <a href="mechanics.html" class="btn-nav">← Назад: Кинематика</a>
+            <a href="mechanics-conservation.html" class="btn-nav secondary">Следующая тема: Законы сохранения →</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Главная</a> | 
+            <a href="materials.html">Материалы (Практика)</a> | 
+            <a href="#">Учебник Мякишева 10-11 класс</a>
+        </div>
+        <p>© 2023 ГБПОУ «Свердловский областной медицинский колледж». Все права защищены.</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function toggleAnswer(id) {
+            var element = document.getElementById(id);
+            var btn = event.target;
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+                btn.textContent = "Скрыть ответ";
+            } else {
+                element.style.display = "none";
+                btn.textContent = "Показать ответ";
+            }
+        }
+    </script>
+</body>
+</html>
