@@ -1,0 +1,26 @@
+{
+    "name": "Физика — СОМК",
+    "short_name": "Физика СОМК",
+    "description": "Интерактивный учебник по физике для студентов Свердловского областного медицинского колледжа",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#F4F8FA",
+    "theme_color": "#005B96",
+    "lang": "ru",
+    "icons": [
+        {
+            "src": "./img/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./img/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
