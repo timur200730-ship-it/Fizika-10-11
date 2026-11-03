@@ -147,9 +147,9 @@
         <!-- СИСТЕМА ВКЛАДОК -->
         <div class="tab-container">
             <div class="tab-buttons">
-                <button class="tab-btn active" onclick="openTab(event, 'tab-short')">📖 Краткий конспект (Лекция)</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-detailed')">📚 Подробный материал</button>
-                <button class="tab-btn" onclick="openTab(event, 'tab-homework')">📝 Домашнее задание</button>
+                <button class="tab-btn active" onclick="openTab(this, 'tab-short')">📖 Краткий конспект (Лекция)</button>
+                <button class="tab-btn" onclick="openTab(this, 'tab-detailed')">📚 Подробный материал</button>
+                <button class="tab-btn" onclick="openTab(this, 'tab-homework')">📝 Домашнее задание</button>
             </div>
 
             <!-- ВКЛАДКА 1: КРАТКИЙ КОНСПЕКТ -->
@@ -268,7 +268,7 @@
                     
                     <div class="task-box">
                         <p><strong>Пример 1 (Относительность):</strong> Поезд едет со скоростью 72 км/ч. Пассажир идет по вагону в направлении движения поезда со скоростью 1,5 м/с. Какова скорость пассажира относительно Земли?</p>
-                        <button class="btn-reveal" onclick="toggleAnswer('ex1')">Показать решение</button>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex1')">Показать решение</button>
                         <div id="ex1" class="answer-block">
                             <p><strong>Решение:</strong> Переведем 72 км/ч в м/с: 72 / 3,6 = 20 м/с.</p>
                             <p>Так как скорости сонаправлены, v = v₁ + v₂ = 20 + 1,5 = <strong>21,5 м/с</strong>.</p>
@@ -277,7 +277,7 @@
 
                     <div class="task-box">
                         <p><strong>Пример 2 (Торможение):</strong> Автомобиль, двигаясь со скоростью 20 м/с, начал тормозить и остановился через 4 с. Найдите ускорение и тормозной путь.</p>
-                        <button class="btn-reveal" onclick="toggleAnswer('ex2')">Показать решение</button>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex2')">Показать решение</button>
                         <div id="ex2" class="answer-block">
                             <p><strong>Решение:</strong> a = (v - v₀) / t = (0 - 20) / 4 = -5 м/с². (Ускорение отрицательное).</p>
                             <p>Тормозной путь: S = (v² - v₀²) / (2a) = (0 - 400) / (2 * -5) = -400 / -10 = <strong>40 м</strong>.</p>
@@ -330,7 +330,7 @@
 
                     <!-- КАРТИНКА 1: Виды движения -->
                     <div class="doc-image-container">
-                        <img src="img/img_01_vidy.png" alt="Виды механического движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_01_vidy.png" alt="Виды механического движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             <strong>Внимание!</strong> Картинка не найдена. Сохраните её как <code>img_01_vidy.png</code>.
                         </div>
@@ -344,7 +344,7 @@
 
                     <!-- КАРТИНКА 2: Лодка -->
                     <div class="doc-image-container">
-                        <img src="img/img_02_lodka.png" alt="Движение человека в лодке" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_02_lodka.png" alt="Движение человека в лодке" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_02_lodka.png</code>.
                         </div>
@@ -357,7 +357,7 @@
 
                     <!-- КАРТИНКА 3: Парусник -->
                     <div class="doc-image-container">
-                        <img src="img/img_03_parusnik.png" alt="Система отсчета, траектория парусника" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_03_parusnik.png" alt="Система отсчета, траектория парусника" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_03_parusnik.png</code>.
                         </div>
@@ -377,7 +377,7 @@
 
                     <!-- КАРТИНКА 4: 1D -->
                     <div class="doc-image-container">
-                        <img src="img/img_04_1d.png" alt="Одномерная система координат" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_04_1d.png" alt="Одномерная система координат" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_04_1d.png</code>.
                         </div>
@@ -389,7 +389,7 @@
 
                     <!-- КАРТИНКА 5: 2D -->
                     <div class="doc-image-container">
-                        <img src="img/img_05_2d.png" alt="Двухмерная система координат" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_05_2d.png" alt="Двухмерная система координат" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_05_2d.png</code>.
                         </div>
@@ -401,7 +401,7 @@
 
                     <!-- КАРТИНКА 6: 3D -->
                     <div class="doc-image-container">
-                        <img src="img/img_06_3d.png" alt="Трехмерная система координат" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_06_3d.png" alt="Трехмерная система координат" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_06_3d.png</code>.
                         </div>
@@ -424,7 +424,7 @@
 
                     <!-- КАРТИНКА 7: Радиус-вектор -->
                     <div class="doc-image-container">
-                        <img src="img/img_07_radius_vector.png" alt="Радиус-вектор точки и его проекции" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_07_radius_vector.png" alt="Радиус-вектор точки и его проекции" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_07_radius_vector.png</code>.
                         </div>
@@ -440,7 +440,7 @@
 
                     <!-- КАРТИНКА 8: Таблица проекций -->
                     <div class="doc-image-container">
-                        <img src="img/img_08_table.png" alt="Проекции вектора перемещения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_08_table.png" alt="Проекции вектора перемещения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_08_table.png</code>.
                         </div>
@@ -455,7 +455,7 @@
 
                     <!-- КАРТИНКА 9: Примеры движения -->
                     <div class="doc-image-container">
-                        <img src="img/img_09_uniform_examples.png" alt="Примеры движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_09_uniform_examples.png" alt="Примеры движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_09_uniform_examples.png</code>.
                         </div>
@@ -467,7 +467,7 @@
 
                     <!-- КАРТИНКА 10: Виды равномерного движения -->
                     <div class="doc-image-container">
-                        <img src="img/img_10_uniform_types.png" alt="Виды равномерного движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_10_uniform_types.png" alt="Виды равномерного движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_10_uniform_types.png</code>.
                         </div>
@@ -486,7 +486,7 @@
 
                     <!-- КАРТИНКА 11: Вектор перемещения -->
                     <div class="doc-image-container">
-                        <img src="img/img_11_displacement_vector.png" alt="Перемещение материальной точки" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_11_displacement_vector.png" alt="Перемещение материальной точки" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_11_displacement_vector.png</code>.
                         </div>
@@ -509,7 +509,7 @@
 
                     <!-- КАРТИНКА 12: Уравнения движения -->
                     <div class="doc-image-container">
-                        <img src="img/img_12_equations_graphs.png" alt="Графики и уравнения движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_12_equations_graphs.png" alt="Графики и уравнения движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_12_equations_graphs.png</code>.
                         </div>
@@ -551,7 +551,7 @@
                     
                     <!-- КАРТИНКА 13: Два графика -->
                     <div class="doc-image-container">
-                        <img src="img/img_13_xt_vt_graphs.png" alt="Изменение координаты точки" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_13_xt_vt_graphs.png" alt="Изменение координаты точки" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_13_xt_vt_graphs.png</code>.
                         </div>
@@ -575,7 +575,7 @@
                     
                     <!-- КАРТИНКА 14: График v(t)=3 -->
                     <div class="doc-image-container">
-                        <img src="img/img_14_vt_const_graph.png" alt="График модуля скорости равномерного движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_14_vt_const_graph.png" alt="График модуля скорости равномерного движения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_14_vt_const_graph.png</code>.
                         </div>
@@ -584,7 +584,7 @@
 
                     <!-- КАРТИНКА 45: GIF график v(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_45_uniform_v_graph.gif" alt="График скорости при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_45_uniform_v_graph.gif" alt="График скорости при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_45_uniform_v_graph.gif</code>.
                         </div>
@@ -599,7 +599,7 @@
 
                     <!-- КАРТИНКА 15: Плюс и минус v(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_15_vt_positive_negative.png" alt="Графики v(t)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_15_vt_positive_negative.png" alt="Графики v(t)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_15_vt_positive_negative.png</code>.
                         </div>
@@ -610,7 +610,7 @@
 
                     <!-- КАРТИНКА 16: Площадь под графиком -->
                     <div class="doc-image-container">
-                        <img src="img/img_16_vt_area.png" alt="Определение модуля перемещения по графику" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_16_vt_area.png" alt="Определение модуля перемещения по графику" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_16_vt_area.png</code>.
                         </div>
@@ -621,7 +621,7 @@
 
                     <!-- КАРТИНКА 17: График s(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_17_st_graph.png" alt="График модуля перемещения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_17_st_graph.png" alt="График модуля перемещения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_17_st_graph.png</code>.
                         </div>
@@ -630,7 +630,7 @@
 
                     <!-- КАРТИНКА 46: GIF график s(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_46_uniform_s_graph.gif" alt="График пути при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_46_uniform_s_graph.gif" alt="График пути при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_46_uniform_s_graph.gif</code>.
                         </div>
@@ -645,7 +645,7 @@
 
                     <!-- КАРТИНКА 18: Три графика s(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_18_st_graphs_3.png" alt="Графики перемещений" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_18_st_graphs_3.png" alt="Графики перемещений" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_18_st_graphs_3.png</code>.
                         </div>
@@ -656,7 +656,7 @@
 
                     <!-- КАРТИНКА 19: Тангенс угла -->
                     <div class="doc-image-container">
-                        <img src="img/img_19_st_angle.png" alt="Определение модуля скорости по графику" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_19_st_angle.png" alt="Определение модуля скорости по графику" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_19_st_angle.png</code>.
                         </div>
@@ -670,7 +670,7 @@
 
                     <!-- КАРТИНКА 20: Задача про катера -->
                     <div class="doc-image-container">
-                        <img src="img/img_20_boats_problem.png" alt="Иллюстрация к задаче" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_20_boats_problem.png" alt="Иллюстрация к задаче" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_20_boats_problem.png</code>.
                         </div>
@@ -691,7 +691,7 @@
 
                     <!-- КАРТИНКА 21: График движения катеров -->
                     <div class="doc-image-container">
-                        <img src="img/img_21_boats_graph.png" alt="График движения катеров" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_21_boats_graph.png" alt="График движения катеров" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_21_boats_graph.png</code>.
                         </div>
@@ -714,7 +714,7 @@
 
                     <!-- КАРТИНКА 22: Векторы в одном направлении -->
                     <div class="doc-image-container">
-                        <img src="img/img_22_same_dir.png" alt="Векторы скорости в одном направлении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_22_same_dir.png" alt="Векторы скорости в одном направлении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_22_same_dir.png</code>.
                         </div>
@@ -725,7 +725,7 @@
 
                     <!-- КАРТИНКА 23: Выстроенные векторы -->
                     <div class="doc-image-container">
-                        <img src="img/img_23_result_same_dir.png" alt="Векторы скорости друг за другом" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_23_result_same_dir.png" alt="Векторы скорости друг за другом" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_23_result_same_dir.png</code>.
                         </div>
@@ -740,7 +740,7 @@
 
                     <!-- КАРТИНКА 24: Векторы в разные стороны -->
                     <div class="doc-image-container">
-                        <img src="img/img_24_opposite_dir.png" alt="Векторы направлены в разные стороны" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_24_opposite_dir.png" alt="Векторы направлены в разные стороны" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_24_opposite_dir.png</code>.
                         </div>
@@ -751,7 +751,7 @@
 
                     <!-- КАРТИНКА 25: Результирующий вектор при вычитании -->
                     <div class="doc-image-container">
-                        <img src="img/img_25_result_opposite_dir.png" alt="Результирующий вектор (1)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_25_result_opposite_dir.png" alt="Результирующий вектор (1)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_25_result_opposite_dir.png</code>.
                         </div>
@@ -764,7 +764,7 @@
 
                     <!-- КАРТИНКА 26: Перпендикулярные векторы -->
                     <div class="doc-image-container">
-                        <img src="img/img_26_perpendicular.png" alt="Векторы, перпендикулярные друг другу" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_26_perpendicular.png" alt="Векторы, перпендикулярные друг другу" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_26_perpendicular.png</code>.
                         </div>
@@ -775,7 +775,7 @@
 
                     <!-- КАРТИНКА 27: Правило параллелограмма -->
                     <div class="doc-image-container">
-                        <img src="img/img_27_parallelogram.png" alt="Результирующий вектор по правилу параллелограмма" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_27_parallelogram.png" alt="Результирующий вектор по правилу параллелограмма" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_27_parallelogram.png</code>.
                         </div>
@@ -788,7 +788,7 @@
 
                     <!-- КАРТИНКА 28: Векторы под углом -->
                     <div class="doc-image-container">
-                        <img src="img/img_28_arbitrary.png" alt="Векторы, угол между которыми не равен 90" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_28_arbitrary.png" alt="Векторы, угол между которыми не равен 90" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_28_arbitrary.png</code>.
                         </div>
@@ -799,7 +799,7 @@
 
                     <!-- КАРТИНКА 29: Сложение векторов под углом -->
                     <div class="doc-image-container">
-                        <img src="img/img_29_arbitrary_result.png" alt="Векторы после соединения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_29_arbitrary_result.png" alt="Векторы после соединения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_29_arbitrary_result.png</code>.
                         </div>
@@ -815,7 +815,7 @@
 
                     <!-- КАРТИНКА 30: Синус и косинус -->
                     <div class="doc-image-container">
-                        <img src="img/img_30_sin_cos.png" alt="Синус и косинус угла" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_30_sin_cos.png" alt="Синус и косинус угла" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_30_sin_cos.png</code>.
                         </div>
@@ -827,7 +827,7 @@
 
                     <!-- КАРТИНКА 31: Теорема косинусов -->
                     <div class="doc-image-container">
-                        <img src="img/img_31_cosine.png" alt="Теорема косинусов" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_31_cosine.png" alt="Теорема косинусов" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_31_cosine.png</code>.
                         </div>
@@ -865,7 +865,7 @@
 
                     <!-- КАРТИНКА 32: Сложение перемещений -->
                     <div class="doc-image-container">
-                        <img src="img/img_32_boat_triangle.png" alt="Геометрическое сложение векторов" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_32_boat_triangle.png" alt="Геометрическое сложение векторов" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_32_boat_triangle.png</code>.
                         </div>
@@ -906,7 +906,7 @@
 
                     <!-- КАРТИНКА 33: Криволинейное движение -->
                     <div class="doc-image-container">
-                        <img src="img/img_33_curvilinear.png" alt="Перемещения тела при криволинейном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_33_curvilinear.png" alt="Перемещения тела при криволинейном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_33_curvilinear.png</code>.
                         </div>
@@ -939,7 +939,7 @@
 
                     <!-- КАРТИНКА 34: Спидометр -->
                     <div class="doc-image-container">
-                        <img src="img/img_34_speedometer.png" alt="Спидометр" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_34_speedometer.png" alt="Спидометр" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_34_speedometer.png</code>.
                         </div>
@@ -954,7 +954,7 @@
                     
                     <!-- КАРТИНКА 35: Машина с ускорением -->
                     <div class="doc-image-container">
-                        <img src="img/img_35_accel_def.png" alt="Ускорение тела" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_35_accel_def.png" alt="Ускорение тела" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_35_accel_def.png</code>.
                         </div>
@@ -963,7 +963,7 @@
 
                     <!-- КАРТИНКА 35b: Джип с ускорением -->
                     <div class="doc-image-container">
-                        <img src="img/img_35b_accel_car.png" alt="Направление вектора ускорения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_35b_accel_car.png" alt="Направление вектора ускорения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_35b_accel_car.png</code>.
                         </div>
@@ -983,7 +983,7 @@
 
                     <!-- КАРТИНКА 36: Касательное и центростремительное ускорение -->
                     <div class="doc-image-container">
-                        <img src="img/img_36_tangential.png" alt="Касательное и центростремительное ускорение" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_36_tangential.png" alt="Касательное и центростремительное ускорение" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_36_tangential.png</code>.
                         </div>
@@ -994,7 +994,7 @@
 
                     <!-- КАРТИНКА 37: График a_x(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_37_graph_ax.png" alt="График проекции ускорения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_37_graph_ax.png" alt="График проекции ускорения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_37_graph_ax.png</code>.
                         </div>
@@ -1032,7 +1032,7 @@
                     
                     <!-- КАРТИНКА 45: GIF график v(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_45_uniform_v_graph.gif" alt="График скорости при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_45_uniform_v_graph.gif" alt="График скорости при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_45_uniform_v_graph.gif</code>.
                         </div>
@@ -1046,7 +1046,7 @@
 
                     <!-- КАРТИНКА 46: GIF график s(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_46_uniform_s_graph.gif" alt="График пути при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_46_uniform_s_graph.gif" alt="График пути при равномерном движении" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_46_uniform_s_graph.gif</code>.
                         </div>
@@ -1063,7 +1063,7 @@
 
                     <!-- КАРТИНКА 37a: График ax > 0 -->
                     <div class="doc-image-container">
-                        <img src="img/img_37a_ax_positive.svg" alt="График a_x(t) при a > 0" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_37a_ax_positive.svg" alt="График a_x(t) при a > 0" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_37a_ax_positive.svg</code>.
                         </div>
@@ -1072,7 +1072,7 @@
 
                     <!-- КАРТИНКА 37b: График ax < 0 -->
                     <div class="doc-image-container">
-                        <img src="img/img_37b_ax_negative.svg" alt="График a_x(t) при a < 0" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_37b_ax_negative.svg" alt="График a_x(t) при a < 0" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_37b_ax_negative.svg</code>.
                         </div>
@@ -1083,7 +1083,7 @@
 
                     <!-- КАРТИНКА 38: График v(t) вверх -->
                     <div class="doc-image-container">
-                        <img src="img/img_38_graph_v_up.svg" alt="График скорости возрастает" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_38_graph_v_up.svg" alt="График скорости возрастает" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_38_graph_v_up.svg</code>.
                         </div>
@@ -1092,7 +1092,7 @@
 
                     <!-- КАРТИНКА 39: График v(t) вниз -->
                     <div class="doc-image-container">
-                        <img src="img/img_39_graph_v_down.svg" alt="График скорости убывает" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_39_graph_v_down.svg" alt="График скорости убывает" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_39_graph_v_down.svg</code>.
                         </div>
@@ -1105,7 +1105,7 @@
 
                     <!-- КАРТИНКА 40: Трапеция -->
                     <div class="doc-image-container">
-                        <img src="img/img_40_trapezoid.svg" alt="Площадь трапеции" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_40_trapezoid.svg" alt="Площадь трапеции" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_40_trapezoid.svg</code>.
                         </div>
@@ -1137,7 +1137,7 @@
 
                     <!-- КАРТИНКА 41: Три графика V(t) -->
                     <div class="doc-image-container">
-                        <img src="img/img_41_graph_v_3lines.png" alt="Графики V(t)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_41_graph_v_3lines.png" alt="Графики V(t)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_41_graph_v_3lines.png</code>.
                         </div>
@@ -1148,7 +1148,7 @@
 
                     <!-- КАРТИНКА 42: Графики перемещения -->
                     <div class="doc-image-container">
-                        <img src="img/img_42_graph_parabola.png" alt="Графики перемещения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_42_graph_parabola.png" alt="Графики перемещения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_42_graph_parabola.png</code>.
                         </div>
@@ -1161,7 +1161,7 @@
 
                     <!-- КАРТИНКА 43: Сравнение S и dr -->
                     <div class="doc-image-container">
-                        <img src="img/img_43_graph_compare_s.png" alt="Сравнение графиков" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_43_graph_compare_s.png" alt="Сравнение графиков" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_43_graph_compare_s.png</code>.
                         </div>
@@ -1174,7 +1174,7 @@
 
                     <!-- КАРТИНКА 44: Сравнение x и dr -->
                     <div class="doc-image-container">
-                        <img src="img/img_44_graph_compare_x.gif" alt="Сравнение графиков" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_44_graph_compare_x.gif" alt="Сравнение графиков" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_44_graph_compare_x.gif</code>.
                         </div>
@@ -1192,7 +1192,7 @@
 
                     <!-- КАРТИНКА 47: Трубка Ньютона -->
                     <div class="doc-image-container">
-                        <img src="img/img_47_newton_tube.png" alt="Опыт с трубкой Ньютона" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_47_newton_tube.png" alt="Опыт с трубкой Ньютона" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_47_newton_tube.png</code>.
                         </div>
@@ -1231,7 +1231,7 @@
 
                     <!-- КАРТИНКА 48: Вертикально вверх -->
                     <div class="doc-image-container">
-                        <img src="img/img_48_vertical_up.png" alt="Движение вертикально вверх" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./img/img_48_vertical_up.png" alt="Движение вертикально вверх" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
                             Сохраните картинку как <code>img_48_vertical_up.png</code>.
                         </div>
