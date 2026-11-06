@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тема 1.3 Законы сохранения | СОМК</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#005B96">
+    <link rel="icon" href="./img/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="./img/icon-192.png">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <span>ГБПОУ «Свердловский областной медицинский колледж»</span>
+            <span>Преподаватель: <strong>Хайретдинов Тимур Азатович</strong></span>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-block">
+                    <div class="logo-icon">🏥</div>
+                    <div class="logo-text">
+                        <span class="college-name">СОМК</span>
+                        <span class="discipline">Физика</span>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="./index.html">Главная</a>
+                    <a href="./mechanics.html">Раздел 1.1</a>
+                    <a href="./dynamics.html">Раздел 1.2</a>
+                    <a href="./mechanics-conservation.html" class="active">Раздел 1.3</a>
+                    <a href="./materials.html">Практика</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="./index.html">Главная</a> <span>/</span> Раздел 1. Механика <span>/</span> Тема 1.3
+        </div>
+
+        <div class="page-header">
+            <h1>Тема 1.3: Законы сохранения</h1>
+            <p>Импульс тела, закон сохранения импульса, работа и энергия • 4 академических часа</p>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(this, 'tab-short')">📖 Краткий конспект (Лекция)</button>
+                <button class="tab-btn" onclick="openTab(this, 'tab-detailed')">📚 Подробный материал</button>
+                <button class="tab-btn" onclick="openTab(this, 'tab-homework')">📝 Домашнее задание</button>
+            </div>
+
+            <!-- ВКЛАДКА 1: КРАТКИЙ КОНСПЕКТ (2 часа) -->
+            <div id="tab-short" class="tab-content active">
+                
+                <div class="content-section">
+                    <h2>1. Импульс тела (количество движения)</h2>
+                    <p><strong>Импульс тела (<span class="vec">p</span>)</strong> — это векторная физическая величина, равная произведению массы тела на его скорость. Характеризует способность тела передавать движение другим телам при взаимодействии.</p>
+                    
+                    <div class="formula-block"><span class="vec">p</span> = m * <span class="vec">v</span></div>
+                    <div class="formula-note">где: m — масса тела (кг), v — скорость тела (м/с). Единица измерения: [p] = 1 кг·м/с.</div>
+                    
+                    <p><strong>Свойства импульса:</strong></p>
+                    <ul>
+                        <li>Импульс — векторная величина. Его направление всегда <strong>совпадает с направлением скорости</strong> тела.</li>
+                        <li>Если тело покоится (v = 0), его импульс равен нулю.</li>
+                        <li>Проекция импульса на ось OX: <strong>p<sub>x</sub> = m · v<sub>x</sub></strong>.</li>
+                    </ul>
+
+                    <div class="visual-container">
+                        <div class="visual-card">
+                            <h4>Векторы импульса и скорости</h4>
+                            <svg viewBox="0 0 300 100" style="width: 100%; height: auto;">
+                                <circle cx="50" cy="50" r="30" fill="#a8d5ff" stroke="#005B96" stroke-width="2"/>
+                                <text x="50" y="55" font-size="14" fill="#333" text-anchor="middle">m</text>
+                                <line x1="80" y1="50" x2="200" y2="50" stroke="#00A86B" stroke-width="4" marker-end="url(#arrV)"/>
+                                <text x="140" y="40" font-size="16" fill="#00A86B" font-weight="bold">v</text>
+                                <line x1="80" y1="65" x2="220" y2="65" stroke="#005B96" stroke-width="4" marker-end="url(#arrP)"/>
+                                <text x="150" y="85" font-size="16" fill="#005B96" font-weight="bold">p = mv</text>
+                                <defs>
+                                    <marker id="arrV" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00A86B"/></marker>
+                                    <marker id="arrP" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#005B96"/></marker>
+                                </defs>
+                            </svg>
+                            <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">Вектор импульса всегда сонаправлен вектору скорости</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2>2. Второй закон Ньютона в импульсной форме</h2>
+                    <p>Второй закон Ньютона можно записать через изменение импульса. Сила, действующая на тело, равна скорости изменения его импульса.</p>
+                    
+                    <div class="formula-block"><span class="vec">F</span> * &Delta;t = &Delta;<span class="vec">p</span> = m<span class="vec">v</span> - m<span class="vec">v</span><sub>0</sub></div>
+                    <div class="formula-note">где: F·Δt — импульс силы (Н·с), Δp — изменение импульса тела (кг·м/с).</div>
+                    
+                    <p><strong>Импульс силы (<span class="vec">F</span>·&Delta;t)</strong> — это мера воздействия силы за определённый промежуток времени. Именно импульс силы вызывает изменение импульса тела.</p>
+                    <p><em>Пример:</em> При ударе важно не только значение силы, но и время её действия. Подушка (или согнутые колени при приземлении) увеличивает время &Delta;t, тем самым снижая силу удара F.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>3. Закон сохранения импульса (ЗСИ)</h2>
+                    <p><strong>Замкнутая система тел</strong> — это система, на которую не действуют внешние силы, или их действие скомпенсировано.</p>
+                    
+                    <p><strong>Закон сохранения импульса:</strong> Векторная сумма импульсов тел, составляющих замкнутую систему, остаётся постоянной при любых взаимодействиях тел этой системы между собой.</p>
+                    
+                    <div class="formula-block"><span class="vec">p</span><sub>1</sub> + <span class="vec">p</span><sub>2</sub> = <span class="vec">p</span><sub>1</sub>' + <span class="vec">p</span><sub>2</sub>'</div>
+                    <div class="formula-block">m<sub>1</sub><span class="vec">v</span><sub>1</sub> + m<sub>2</sub><span class="vec">v</span><sub>2</sub> = m<sub>1</sub><span class="vec">v</span><sub>1</sub>' + m<sub>2</sub><span class="vec">v</span><sub>2</sub>'</div>
+                    <div class="formula-note">где: m₁, m₂ — массы тел, v₁, v₂ — скорости до взаимодействия, v₁', v₂' — скорости после взаимодействия.</div>
+
+                    <div class="visual-container">
+                        <div class="visual-card">
+                            <h4>Столкновение двух тел (пример ЗСИ)</h4>
+                            <svg viewBox="0 0 400 120" style="width: 100%; height: auto;">
+                                <circle cx="50" cy="40" r="20" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                                <text x="50" y="45" font-size="12" text-anchor="middle">m₁</text>
+                                <line x1="70" y1="40" x2="120" y2="40" stroke="#1976D2" stroke-width="3" marker-end="url(#arrBlue)"/>
+                                <text x="95" y="30" font-size="12" fill="#1976D2">v₁</text>
+
+                                <circle cx="250" cy="40" r="20" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                                <text x="250" y="45" font-size="12" text-anchor="middle">m₂</text>
+                                <line x1="230" y1="40" x2="180" y2="40" stroke="#1976D2" stroke-width="3" marker-end="url(#arrBlue)"/>
+                                <text x="205" y="30" font-size="12" fill="#1976D2">v₂</text>
+
+                                <text x="150" y="90" font-size="14" fill="#333">После:</text>
+                                <circle cx="50" cy="100" r="20" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                                <text x="50" y="105" font-size="12" text-anchor="middle">m₁</text>
+                                <line x1="30" y1="100" x2="10" y2="100" stroke="#00A86B" stroke-width="3" marker-end="url(#arrGreen)"/>
+                                <text x="20" y="90" font-size="12" fill="#00A86B">v₁'</text>
+
+                                <circle cx="250" cy="100" r="20" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                                <text x="250" y="105" font-size="12" text-anchor="middle">m₂</text>
+                                <line x1="270" y1="100" x2="320" y2="100" stroke="#00A86B" stroke-width="3" marker-end="url(#arrGreen)"/>
+                                <text x="295" y="90" font-size="12" fill="#00A86B">v₂'</text>
+
+                                <defs>
+                                    <marker id="arrBlue" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1976D2"/></marker>
+                                    <marker id="arrGreen" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00A86B"/></marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2>4. Реактивное движение</h2>
+                    <p><strong>Реактивное движение</strong> — это движение тела, возникающее при отделении от него с какой-либо скоростью некоторой его части.</p>
+                    <p>В основе реактивного движения лежит закон сохранения импульса. Если из ракеты массой M со скоростью v вылетает газ массой m со скоростью u, то сама ракета приобретает скорость V, направленную в противоположную сторону:</p>
+                    <div class="formula-block">M * V = m * u</div>
+                    <p>Примеры: движение ракет, реактивных самолетов, каракатиц и осьминогов (выбрасывание воды).</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>5. Механическая работа</h2>
+                    <p><strong>Механическая работа (A)</strong> — это физическая величина, которая показывает, какая энергия была затрачена на перемещение тела. Измеряется в джоулях (Дж).</p>
+                    <p>Если при прямолинейном движении на тело действует неизменная сила под углом к направлению движения, работа вычисляется по формуле:</p>
+                    <div class="formula-block">A = F · l · cos&alpha;</div>
+                    <div class="formula-note">где: F — сила (Н), l — перемещение (м), &alpha; — угол между направлением силы и направлением движения.</div>
+                    <p><strong>Частные случаи:</strong></p>
+                    <ul>
+                        <li>Если сила совпадает с направлением движения (&alpha; = 0), то <strong>A = F · l</strong>.</li>
+                        <li>Если сила направлена вертикально вверх (например, подъем груза), то <strong>A = m · g · h</strong>.</li>
+                        <li>Если сила направлена против движения (&alpha; = 180°), работа <strong>отрицательна</strong> (например, работа силы трения: A = -F · l).</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2>6. Работа силы тяжести. Консервативные силы</h2>
+                    <p>Работа силы тяжести зависит только от начального и конечного положения тела (от начальной и конечной высоты), но <strong>не зависит от формы траектории</strong>.</p>
+                    <div class="formula-block">A<sub>тяж</sub> = m · g · (h<sub>1</sub> − h<sub>2</sub>)</div>
+                    <div class="formula-note">где: h<sub>1</sub> — начальная высота (м), h<sub>2</sub> — конечная высота (м).</div>
+                    <ul>
+                        <li>Если тело падает вниз (h<sub>1</sub> > h<sub>2</sub>), работа положительна (A > 0).</li>
+                        <li>Если тело поднимается вверх (h<sub>1</sub> < h<sub>2</sub>), работа отрицательна (A < 0).</li>
+                        <li>Если тело движется по горизонтали (h<sub>1</sub> = h<sub>2</sub>), работа равна нулю (A = 0).</li>
+                    </ul>
+                    <p><strong>Консервативные силы</strong> — это силы, работа которых не зависит от формы траектории и по замкнутой траектории равна нулю. Сила тяжести — консервативная сила.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>7. Работа силы упругости</h2>
+                    <p>Работу силы упругости можно определить только при упругой деформации. Она также <strong>не зависит от формы траектории</strong> и определяется начальным и конечным удлинением пружины.</p>
+                    <div class="formula-block">A = (k · x<sub>1</sub><sup>2</sup> / 2) − (k · x<sub>2</sub><sup>2</sup> / 2)</div>
+                    <div class="formula-note">где: k — жёсткость пружины (Н/м), x<sub>1</sub> — начальное удлинение (м), x<sub>2</sub> — конечное удлинение (м).</div>
+                    <p><strong>Сила упругости является консервативной силой.</strong></p>
+                </div>
+
+                <div class="medical-box">
+                    <h3>🩺 Связь с медициной</h3>
+                    <ul>
+                        <li><strong>Травматология и удар:</strong> При падении или ударе важно вовремя сгруппироваться. Увеличение времени взаимодействия (Δt) за счет амортизации (мышцы, хрящи) снижает силу удара (F = Δp / Δt).</li>
+                        <li><strong>Баллистокардиография:</strong> Метод исследования сердечной деятельности, основанный на регистрации перемещений тела человека (реактивное движение).</li>
+                        <li><strong>Инъекции:</strong> При уколе шприцем поршень передает импульс жидкости. Отдача (реакция) минимальна, так как масса шприца велика.</li>
+                        <li><strong>Работа мышц:</strong> При подъеме тяжестей мышцы совершают работу против силы тяжести (A = mgh). При удержании груза работа не совершается (нет перемещения).</li>
+                        <li><strong>Упругие свойства тканей:</strong> Кожа, сухожилия и сосуды обладают упругостью. Работа силы упругости важна при растяжении тканей и восстановлении их формы.</li>
+                    </ul>
+                </div>
+
+                <div class="experiment-box">
+                    <h3>🧪 Быстрый опыт: Работа силы упругости</h3>
+                    <p><strong>Ход:</strong> Возьмите пружину (или резинку), сожмите её и отпустите. Обратите внимание, как она возвращается в исходное состояние. Сила упругости при этом совершает положительную работу.</p>
+                </div>
+
+                <div class="practice-cheatsheet">
+                    <h3>🎯 Шпаргалка для Практической работы №3</h3>
+                    <p><strong>1. Закон сохранения импульса (абсолютно неупругий удар):</strong><br>
+                    Тела после столкновения движутся вместе: <strong>m₁v₁ + m₂v₂ = (m₁ + m₂)v'</strong>.</p>
+                    
+                    <p><strong>2. Абсолютно упругий удар:</strong><br>
+                    Шары разлетаются с разными скоростями: <strong>m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</strong>.</p>
+
+                    <p><strong>3. Импульс силы:</strong><br>
+                    <strong>F·Δt = Δp</strong>. Отсюда можно найти среднюю силу удара или время торможения.</p>
+
+                    <p><strong>4. Работа:</strong><br>
+                    <strong>A = F · l · cos&alpha;</strong>. Если &alpha;=0 (сила по движению), A = F·l. Если &alpha;=180 (трение), A = -F·l. Подъем груза: A = mgh.</p>
+
+                    <p><strong>5. Работа силы тяжести:</strong><br>
+                    <strong>A<sub>тяж</sub> = mg(h₁ - h₂)</strong>. Не зависит от формы траектории.</p>
+
+                    <p><strong>6. Работа силы упругости:</strong><br>
+                    <strong>A = kx₁²/2 - kx₂²/2</strong>. Не зависит от формы траектории.</p>
+                </div>
+
+                <div class="content-section" style="border-left-color: #FF9800;">
+                    <h2 style="color: #E65100;">📝 Примеры решения типовых задач</h2>
+                    
+                    <div class="task-box">
+                        <p><strong>Пример 1 (Импульс тела):</strong> Найдите импульс автомобиля массой 2 т, движущегося со скоростью 72 км/ч.</p>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex1')">Показать решение</button>
+                        <div id="ex1" class="answer-block">
+                            <p><strong>Решение:</strong> Переведем массу в кг: 2 т = 2000 кг. Скорость в м/с: 72 / 3,6 = 20 м/с.</p>
+                            <p>p = m·v = 2000 кг · 20 м/с = <strong>40 000 кг·м/с.</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="task-box">
+                        <p><strong>Пример 2 (ЗСИ):</strong> Тележка массой 20 кг движется со скоростью 2 м/с. Навстречу ей едет тележка массой 30 кг со скоростью 1 м/с. После сцепки они движутся вместе. Найдите их скорость.</p>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex2')">Показать решение</button>
+                        <div id="ex2" class="answer-block">
+                            <p><strong>Решение:</strong> m₁v₁ - m₂v₂ = (m₁ + m₂)v' (т.к. движутся навстречу).</p>
+                            <p>20·2 - 30·1 = (20 + 30) · v'</p>
+                            <p>40 - 30 = 50 · v'</p>
+                            <p>10 = 50 · v' &rArr; v' = <strong>0,2 м/с.</strong> (направление совпадает с первой тележкой).</p>
+                        </div>
+                    </div>
+
+                    <div class="task-box">
+                        <p><strong>Пример 3 (Работа):</strong> Ящик тянут по горизонтальной поверхности с силой 50 Н под углом 60° к горизонту. Перемещение составило 10 м. Найдите работу силы тяги.</p>
+                        <button class="btn-reveal" onclick="toggleAnswer(this, 'ex3')">Показать решение</button>
+                        <div id="ex3" class="answer-block">
+                            <p><strong>Решение:</strong> A = F·l·cos&alpha; = 50 Н · 10 м · cos 60° = 50 · 10 · 0,5 = <strong>250 Дж.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА 2: ПОДРОБНЫЙ МАТЕРИАЛ -->
+            <div id="tab-detailed" class="tab-content">
+                <div class="content-section">
+                    <h2>Подробная теория (для самостоятельного изучения)</h2>
+                    
+                    <!-- ЧАСТЬ 1: Импульс тела -->
+                    <h3>1. Импульс тела</h3>
+                    <p>Импульс... Понятие, довольно часто используемое в физике. Что понимают под этим термином?</p>
+                    <p>Простой обыватель скажет тебе, что импульс — это определённое воздействие (толчок или удар), оказываемое на тело, благодаря чему оно получает возможность двигаться в заданном направлении.</p>
+                    <p>В толковом словаре Ожегова ты прочитаешь, что импульс — это побудительный момент, толчок, вызывающий какое-нибудь действие.</p>
+                    
+                    <p><strong>Импульсом тела p (количеством движения)</strong> называется векторная физическая величина, модуль которой равен произведению массы тела на его скорость.</p>
+                    
+                    <div class="formula-block"><span class="vec">p</span> = m * <span class="vec">v</span></div>
+                    
+                    <p>Таким образом, импульс тела — это характеристика движения тела, которая напрямую зависит от его массы и скорости. Чем больше масса и/или скорость движения тела, тем больше его импульс, а значит, тем большее воздействие тело способно оказать на другие тела при взаимодействии с ними. В состоянии покоя скорость равна нулю, следовательно, и величина импульса равна нулю.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_01_vector.svg" alt="Векторы импульса и скорости" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            <strong>Внимание!</strong> Картинка не найдена. Сохраните её как <code>img/img_mom_01_vector.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 1. Векторы скорости и импульса тела.</div>
+                    </div>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Импульс имеет направление скорости движущегося тела. Векторы скорости и импульса тела сонаправлены.</p>
+                    </div>
+
+                    <p>Единицей измерения импульса тела, движущегося со скоростью 1 м/с, имеющего массу 1 кг, считают 1 кг · м/с. [p] = 1 кг·м/с.</p>
+                    <p>Если проекция вектора скорости на ось Ох положительна, то и проекция вектора импульса на ось Ох положительна. Если проекция скорости отрицательна, то и проекция импульса отрицательна.</p>
+                    <div class="formula-block">p<sub>x</sub> = m * v<sub>x</sub></div>
+                    <p>При взаимодействии тел их импульсы могут изменяться.</p>
+
+                    <!-- ЧАСТЬ 2 -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">2. Импульс материальной точки и системы точек. Импульс силы и его изменение</h3>
+                    <p><strong>Импульс материальной точки:</strong></p>
+                    <div class="formula-block"><span class="vec">p</span> = m * <span class="vec">v</span></div>
+                    
+                    <p><strong>Полный (суммарный) импульс системы материальных точек</strong> равен векторной сумме импульсов отдельных частиц системы:</p>
+                    <div class="formula-block"><span class="vec">P</span> = <span class="vec">p</span><sub>1</sub> + <span class="vec">p</span><sub>2</sub> + ... + <span class="vec">p</span><sub>N</sub> = m<sub>1</sub><span class="vec">v</span><sub>1</sub> + m<sub>2</sub><span class="vec">v</span><sub>2</sub> + ... + m<sub>N</sub><span class="vec">v</span><sub>N</sub></div>
+                    <div class="formula-note">где N — общее количество частиц в рассматриваемой системе.</div>
+
+                    <p><strong>Второй закон Ньютона в импульсной форме:</strong> изменение импульса тела равно импульсу действующей на него силы.</p>
+                    <div class="formula-block">&Delta;<span class="vec">p</span> = <span class="vec">F</span> * &Delta;t</div>
+                    <div class="formula-note">где <span class="vec">F</span> = const, а величина (<span class="vec">F</span> * &Delta;t) называется импульсом силы. Единицы измерения: [F·Δt] = Н·с (ньютон-секунда).</div>
+
+                    <!-- ЧАСТЬ 3 -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">3. Закон сохранения импульса</h3>
+                    <p>Рассмотрим изменение импульсов тел при их взаимодействии друг с другом. Если два или несколько тел взаимодействуют только между собой (то есть не подвергаются воздействию внешних сил), то эти тела образуют <strong>замкнутую систему</strong>.</p>
+                    <p>Импульс, равный векторной сумме импульсов тел, входящих в замкнутую систему, называется <strong>суммарным импульсом</strong> этой системы.</p>
+                    <div class="formula-block"><span class="vec">p<sub>сум</sub></span> = <span class="vec">p</span><sub>1</sub> + <span class="vec">p</span><sub>2</sub> + ... + <span class="vec">p</span><sub>n</sub></div>
+
+                    <p><strong>Закон сохранения импульса:</strong> Суммарный импульс системы тел до взаимодействия равен суммарному импульсу этой системы тел после взаимодействия.</p>
+                    <p>В этом заключается закон сохранения импульса, который называют также законом сохранения количества движения. Впервые он был сформулирован Р. Декартом. В одном из своих писем он написал:</p>
+                    <p><em>«Я принимаю, что во Вселенной, во всей созданной материи есть известное количество движения, которое никогда не увеличивается, не уменьшается, и, таким образом, если одно тело приводит в движение другое, то теряет столько своего движения, сколько его сообщает».</em></p>
+
+                    <p>Для примера возьмем систему из двух тел: шары массами m₁ и m₂ равномерно и прямолинейно движутся со скоростями v₁ и v₂, причем их скорости противоположно направлены, то есть шары движутся навстречу друг другу.</p>
+                    
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_02_before_collision.svg" alt="Направление движения шаров до соударения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_02_before_collision.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 2. Направление движения шаров до соударения.</div>
+                    </div>
+
+                    <p>Когда шары приблизятся друг к другу, произойдет столкновение. Удар не будет мгновенным, он займёт пусть малое, но вполне измеримое время t, при этом появятся силы взаимодействия F₁ и F₂, которые будут приложены к первому и второму шарам соответственно. Под действием силы скорость тела меняется, поэтому изменятся и скорости шаров. После столкновения модули и направления скоростей могут быть совершенно иными, поэтому обозначим скорости v₁' и v₂' соответственно.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_03_after_collision.svg" alt="Направление движения шаров после соударения" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_03_after_collision.svg</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 3. Направление движения шаров после соударения.</div>
+                    </div>
+
+                    <p>Тогда, согласно закону сохранения импульса, имеют место равенства:</p>
+                    <div class="formula-block"><span class="vec">p</span><sub>1</sub> + <span class="vec">p</span><sub>2</sub> = <span class="vec">p</span><sub>1</sub>' + <span class="vec">p</span><sub>2</sub>'</div>
+                    <div class="formula-block">m<sub>1</sub><span class="vec">v</span><sub>1</sub> + m<sub>2</sub><span class="vec">v</span><sub>2</sub> = m<sub>1</sub><span class="vec">v</span><sub>1</sub>' + m<sub>2</sub><span class="vec">v</span><sub>2</sub>'</div>
+                    <p>Данные равенства являются математической записью закона сохранения импульса.</p>
+
+                    <p>Закон сохранения импульса выполняется и в том случае, если на тела системы действуют внешние силы, векторная сумма которых равна нулю. Таким образом, более точно закон сохранения импульса формулируется так: векторная сумма импульсов всех тел замкнутой системы — величина постоянная, если внешние силы, действующие на неё, отсутствуют или же их векторная сумма равна нулю.</p>
+                    <p>Импульс системы тел может измениться только в результате действия на систему внешних сил. И тогда закон сохранения импульса действовать не будет.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>В природе замкнутых систем не существует. Но если время действия внешних сил очень мало, например, во время взрыва, выстрела и т. п., то в этом случае воздействием внешних сил на систему пренебрегают, а саму систему рассматривают как замкнутую.</p>
+                        <p>Кроме того, если на систему действуют внешние силы, но сумма их проекций на одну из координатных осей равна нулю (то есть силы уравновешены в направлении этой оси), то в этом направлении закон сохранения импульса выполняется.</p>
+                    </div>
+
+                    <h4>Пример: выстрел из пушки</h4>
+                    <p>При стрельбе из пушки возникает отдача: снаряд летит вперёд, а само орудие откатывается назад. Почему?</p>
+                    
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_04_cannon.png" alt="После выстрела пушка откатывается назад" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_04_cannon.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 4. После выстрела пушка откатывается назад.</div>
+                    </div>
+
+                    <p>Снаряд и пушка — замкнутая система, в которой действует закон сохранения импульса. В результате выстрела из пушки импульс самой пушки и импульс снаряда изменятся. Но сумма импульсов пушки и находящегося в ней снаряда до выстрела останется равной сумме импульсов откатывающейся пушки и летящего снаряда после выстрела.</p>
+
+                    <h4>Маятник Ньютона (колыбель Ньютона)</h4>
+                    <p>Великий учёный Исаак Ньютон изобрёл наглядную демонстрацию закона сохранения импульса.</p>
+                    
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_05_cradle.png" alt="Маятник Ньютона" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_05_cradle.png</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 5. Устройство для демонстрации закона сохранения импульса, колыбель Ньютона.</div>
+                    </div>
+
+                    <p>Маятник Ньютона устроен так, что начальный шар передаёт импульс второму шарику, а затем замирает. Нашему глазу на первый взгляд не заметно, как следующий шарик принимает импульс от предыдущего, мы не можем проследить его скорость. Но, если взглянуть пристальнее, можно заметить, как шарик немножко «вздрагивает». Это объясняется тем, что он совершает движения с посланной ему скоростью, но поскольку расстояние очень маленькое, ему некуда разогнаться, то он может на своём коротком пути передать импульс третьему шарику и в итоге остановиться. Такое же действие совершает и следующий шарик и т. д. Последнему шарику некуда передавать свой импульс, поэтому он свободно колеблется, поднимаясь на определённую высоту, а затем возвращается, и весь процесс передачи импульсов повторяется в обратном порядке.</p>
+
+                    <!-- ЧАСТЬ 4: ВИДЫ ВЗАИМОДЕЙСТВИЙ (УДАРЫ) -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">4. Виды взаимодействий (Удары)</h3>
+                    <p>В механике одним из видов взаимодействия между телами являются соударения, или удары.</p>
+                    <p><strong>Удар</strong> — толчок, кратковременное взаимодействие тел, при котором происходит перераспределение кинетической энергии. В физике под ударом понимают такой тип взаимодействия движущихся тел, при котором временем взаимодействия можно пренебречь.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>При ударе выполняется закон сохранения импульса. Предполагается, что на время удара действием внешних сил можно пренебречь. Тогда полный импульс тел при ударе сохраняется. В противном случае нужно учитывать импульс внешних сил. Часть энергии обычно уходит на нагрев тел и звук.</p>
+                    </div>
+
+                    <p>Результат столкновения двух тел можно полностью рассчитать, если известно их движение до удара и механическая энергия после удара. Если не известны потери энергии, происходит одновременное столкновение нескольких тел или столкновение точечных частиц, то определить однозначно движение тел после удара невозможно. В общем случае решение задачи о столкновении, кроме знания начальных скоростей, требует дополнительных параметров.</p>
+
+                    <h4>Абсолютно упругий удар</h4>
+                    <p><strong>Абсолютно упругий удар</strong> — модель соударения, при которой полная кинетическая энергия системы сохраняется. В классической механике при этом пренебрегают деформациями тел. Соответственно, считается, что энергия на деформации не теряется, а взаимодействие распространяется по всему телу мгновенно.</p>
+                    
+                    <p><em>Пример:</em> хорошей моделью абсолютно упругого удара является столкновение бильярдных шаров или упругих мячиков.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_07_collision_1.gif" alt="Центральное и абсолютно упругое столкновение шара с меньшей массой и покоящегося шара с большей массой" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_07_collision_1.gif</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 7. Столкновение шара с меньшей массой и покоящегося шара с большей массой.</div>
+                    </div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_08_collision_2.gif" alt="Центральное и абсолютно упругое столкновение шара с большей массой и покоящегося шара с меньшей массой" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_08_collision_2.gif</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 8. Столкновение шара с большей массой и покоящегося шара с меньшей массой.</div>
+                    </div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_09_collision_3.gif" alt="Центральное и абсолютно упругое столкновение движущегося и покоящегося шаров одинаковой массы" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">
+                            Сохраните картинку как <code>img_mom_09_collision_3.gif</code>.
+                        </div>
+                        <div class="doc-image-caption">Рис. 9. Столкновение движущегося и покоящегося шаров одинаковой массы.</div>
+                    </div>
+
+                    <p>Математическая модель абсолютно упругого удара работает примерно следующим образом:</p>
+                    <ol>
+                        <li>Есть в наличии два абсолютно твёрдых тела, которые сталкиваются.</li>
+                        <li>В точке контакта происходят упругие деформации. Кинетическая энергия движущихся тел мгновенно и полностью переходит в энергию деформации.</li>
+                        <li>В следующий момент деформированные тела принимают свою прежнюю форму, а энергия деформации полностью обратно переходит в кинетическую энергию.</li>
+                        <li>Контакт тел прекращается, и они продолжают движение.</li>
+                    </ol>
+
+                    <p>Для математического описания простейших абсолютно упругих ударов используется закон сохранения энергии:</p>
+                    <div class="formula-block">(m<sub>1</sub>u<sub>1</sub><sup>2</sup>)/2 + (m<sub>2</sub>u<sub>2</sub><sup>2</sup>)/2 = (m<sub>1</sub>v<sub>1</sub><sup>2</sup>)/2 + (m<sub>2</sub>v<sub>2</sub><sup>2</sup>)/2</div>
+                    <p>а также закон сохранения импульса:</p>
+                    <div class="formula-block">m<sub>1</sub><span class="vec">u</span><sub>1</sub> + m<sub>2</sub><span class="vec">u</span><sub>2</sub> = m<sub>1</sub><span class="vec">v</span><sub>1</sub> + m<sub>2</sub><span class="vec">v</span><sub>2</sub></div>
+                    <div class="formula-note">где m<sub>1</sub>, m<sub>2</sub> — массы первого и второго тела, <span class="vec">u</span><sub>1</sub>, <span class="vec">u</span><sub>2</sub> — скорости тел до удара, <span class="vec">v</span><sub>1</sub>, <span class="vec">v</span><sub>2</sub> — скорости тел после удара соответственно.</div>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Импульсы складываются векторно, а энергии — скалярно.</p>
+                    </div>
+
+                    <p><strong>Примеры частных случаев упругих ударов и их результаты:</strong></p>
+                    <p><em>1. Абсолютно упругий удар тел равных масс (покоящегося и движущегося).</em></p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_10_elastic_equal_before.png" alt="Тела равных масс до удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_10_elastic_equal_before.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 10. Тела равных масс (покоящееся и движущееся) до удара.</div>
+                    </div>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_11_elastic_equal_after.png" alt="Тела равных масс после удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_11_elastic_equal_after.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 11. Тела равных масс (покоящееся и движущееся) после удара.</div>
+                    </div>
+
+                    <p><em>2. Абсолютно упругий удар двух тел разных масс.</em></p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_12_elastic_diff_before.png" alt="Тела разных масс до удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_12_elastic_diff_before.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 12. Тела разных масс до удара.</div>
+                    </div>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_13_elastic_diff_after.png" alt="Тела разных масс после удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_13_elastic_diff_after.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 13. Тела разных масс после удара.</div>
+                    </div>
+
+                    <p><em>3. Абсолютно упругий удар тел равных масс, но с различными направлениями и модулями скоростей (движутся навстречу).</em></p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_14_elastic_opposite_before.png" alt="Тела навстречу до удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_14_elastic_opposite_before.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 14. Двигающиеся навстречу друг другу с разными скоростями тела равных масс до удара.</div>
+                    </div>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_15_elastic_opposite_after.png" alt="Тела навстречу после удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_15_elastic_opposite_after.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 15. Двигающиеся навстречу друг другу с разными скоростями тела равных масс после удара.</div>
+                    </div>
+
+                    <p><em>4. Абсолютно упругий удар тел равных масс (движутся в одном направлении).</em></p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_16_elastic_same_dir_before.png" alt="Тела в одном направлении до удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_16_elastic_same_dir_before.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 16. Двигающиеся в одном направлении с разными скоростями тела равных масс до удара.</div>
+                    </div>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_17_elastic_same_dir_after.png" alt="Тела в одном направлении после удара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_17_elastic_same_dir_after.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 17. Двигающиеся в одном направлении с разными скоростями тела равных масс после удара.</div>
+                    </div>
+
+                    <h4>Абсолютно неупругий удар</h4>
+                    <p><strong>Абсолютно неупругий удар</strong> — удар, в результате которого тела соединяются и продолжают дальнейшее своё движение как единое тело.</p>
+                    <p><em>Пример:</em> абсолютно неупругий удар тел равных масс (покоящегося и движущегося).</p>
+                    
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_18_inelastic_before.png" alt="Неупругий удар до" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_18_inelastic_before.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 18. Тела равных масс (покоящееся и движущееся) до удара.</div>
+                    </div>
+                    
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_19_inelastic_after.png" alt="Неупругий удар после" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_19_inelastic_after.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 19. Тела равных масс (покоящееся и движущееся) после удара.</div>
+                    </div>
+
+                    <p>Общая скорость тел после неупругого удара может быть найдена из закона сохранения импульса:</p>
+                    <div class="formula-block">m<sub>1</sub><span class="vec">v</span><sub>1</sub> + m<sub>2</sub><span class="vec">v</span><sub>2</sub> = (m<sub>1</sub> + m<sub>2</sub>)<span class="vec">v</span></div>
+                    <div class="formula-note">где m<sub>1</sub>, m<sub>2</sub> — массы первого и второго тела, <span class="vec">v</span><sub>1</sub>, <span class="vec">v</span><sub>2</sub> — скорости тел до удара, <span class="vec">v</span> — общая скорость тел, полученная после удара.</div>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Импульсы являются величинами векторными, поэтому складываются только векторно. Как и при любом ударе, при абсолютно неупругом ударе выполняется закон сохранения импульса и закон сохранения момента импульса, но не выполняется закон сохранения механической энергии. Часть кинетической энергии соударяемых тел в результате неупругих деформаций переходит в тепловую.</p>
+                    </div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_20_plasticine.png" alt="Сталкивающиеся пластилиновые шарики" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_20_plasticine.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 20. Сталкивающиеся пластилиновые шарики.</div>
+                    </div>
+
+                    <!-- ЧАСТЬ 5: РЕАКТИВНОЕ ДВИЖЕНИЕ -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">5. Реактивное движение. Ракеты</h3>
+                    <p><em>Пример:</em> характер движения воздушного шарика, отпущенного с возможностью выпускать воздух через узкое отверстие, отличается скоростью движения, траекторией полёта и источником энергии движения.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_21_balloon.png" alt="Полёт воздушного шарика" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_21_balloon.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 21. Полёт воздушного шарика.</div>
+                    </div>
+
+                    <p>Какова механика полёта шарика? Надувая шарик, мы создаем в нем повышенное давление. Потом завязываем отверстие ниткой, чтобы воздух не выходил. В этот момент времени шарик и воздух в нем находятся в покое. Следовательно, суммарный импульс системы шарик-воздух равен нулю:</p>
+                    <div class="formula-block">p<sub>0</sub> = 0</div>
+
+                    <p>Если развязать нитку, воздух начнет выходить из шарика с некоторой скоростью. Значит, мы можем говорить об импульсе выходящего воздуха. Направление импульса совпадает с направлением движения воздуха.</p>
+                    <div class="formula-block">p<sub>1</sub> = m<sub>воздуха</sub> * V<sub>1</sub></div>
+
+                    <p>При выполнении закона сохранения импульса общий импульс системы тел шарик-воздух не должен измениться (т.е. должен быть равен нулю):</p>
+                    <div class="formula-block"><span class="vec">p<sub>0</sub></span> = <span class="vec">p<sub>1</sub></span> + <span class="vec">p<sub>2</sub></span> = 0</div>
+
+                    <p>Чтобы выполнялось это условие, воздух движется в одну сторону, а шарик — в противоположную, причем их скорости таковы, что модули импульса воздушной струи и шарика равны.</p>
+                    <div class="formula-block">p<sub>2</sub> = m<sub>шарика</sub> * V<sub>2</sub> = m<sub>воздуха</sub> * V<sub>1</sub></div>
+
+                    <p>Векторы импульсов шарика и воздушной струи совпадают с направлениями векторов скоростей. Векторы скоростей, а следовательно и импульсов, направлены в противоположные стороны. В результате равенства модулей и противоположности направлений, суммарный импульс воздушной струи и шарика остаётся равным нулю, т.е. таким же, как и до начала движения.</p>
+                    <p>Данная демонстрация движения шарика при истечении из него потока воздуха является примером реактивного движения. Направление скорости движения воздуха противоположно направлению скорости движения самого шарика, поэтому импульс шарика противоположен импульсу воздушной струи.</p>
+                    
+                    <p><strong>Реактивное движение</strong> — это движение, которое возникает при отделении от тела некоторой его части с определённой скоростью.</p>
+
+                    <p>Вращение устройства, показанного на рисунке, основано на реактивном движении в жидкости.</p>
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_22_segner.png" alt="Сегнерово колесо" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_22_segner.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 22. Демонстрация реактивного движения, сегнерово колесо.</div>
+                    </div>
+
+                    <p>По сообщающимся с сосудом изогнутым трубкам вытекает вода. Струя из трубки ударяет в стенку поддона или просто с большим давлением бьет из трубки. За счет отбрасывания воды трубка движется в противоположную сторону и сосуд вращается. Такой пример показывает, что для реактивного движения можно использовать не только газ, но и жидкость. Многие морские существа пользуются реактивным движением: кальмары, осьминоги, каракатицы.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_23_jellyfish.gif" alt="Движение медузы" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_23_jellyfish.gif</code>.</div>
+                        <div class="doc-image-caption">Рис. 23. Движение медузы.</div>
+                    </div>
+
+                    <p>Например, кальмар засасывает воду в мантийную полость, а затем резко выталкивает струю воды через воронку. Надо отметить тот факт, что тело кальмара своими внешними формами сходно с ракетой.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_24_squid.gif" alt="Движение кальмара" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_24_squid.gif</code>.</div>
+                        <div class="doc-image-caption">Рис. 24. Движение кальмара.</div>
+                    </div>
+
+                    <p>Реактивное движение в природе можно проиллюстрировать и примерами из мира растений.</p>
+                    <p>Бешеный огурец (лат. Ecballium elaterium через др.-греч. ἐκβάλλω — «выбрасываю») известен свойством выстреливать семенами на расстояние более 6 м. Это происходит из-за высокого давления внутри плода.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_25_cucumber.png" alt="Бешеный огурец" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_25_cucumber.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 25. Бешеный огурец.</div>
+                    </div>
+
+                    <h4>Из истории изобретения ракет</h4>
+                    <p>Наблюдая реактивное движение в природе, учёные изобретали реактивные двигатели, которые сначала применялись для развлечения, для использования в военном деле, позже — для водного, воздушного и космического транспорта.</p>
+                    <p>Реактивные двигатели эффективны там, где нет среды, опоры для передвижения. Чтобы изменять своё положение в пространстве, телу необходима точка опоры либо сила, которая придаст импульс. В безвоздушном пространстве импульс можно получить только от энергии реактивного движения. <strong>Ракета</strong> (от итал. rocchetta — маленькое веретено, через нем. Rakete или нидерл. raket) — аппарат, двигающийся за счёт реактивной силы вследствие отброса рабочего тела аппарата без использования вещества окружающей среды.</p>
+
+                    <p>Ракета была известна давно. Очевидно, она появилась много веков назад на Востоке, возможно, в Древнем Китае — родине пороха. Ракеты использовали во время народных празднеств, устраивали фейерверки, зажигали в небе огненные дожди, фонтаны, колёса.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_26_ancient_weapon.jpg" alt="Древнее метательное оружие" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_26_ancient_weapon.jpg</code>.</div>
+                        <div class="doc-image-caption">Рис. 26. Изображение древнего метательного оружия.</div>
+                    </div>
+
+                    <p>Ракеты применяли в военном деле. Долгое время ракета была одновременно и оружием, и игрушкой. В начале XVII века в «Уставе ратных, пушечных и других дел, касающихся до военной науки» подробное описание русских ракет дано пушечным мастером Онисимом Михайловым. В 1680 году в Москве учреждено первое «ракетное заведение». В лабораториях изготавливали порох для ракет и отдельные их части. В 1717 году на вооружение русской армии принята сигнальная ракета в один фунт, которая поднималась на 1 километр.</p>
+
+                    <p>В фантастических рассказах писатели предлагали использовать ракету для быстрого передвижения по воздуху. В России первым изобретателем ракет был Николай Иванович Кибальчич, химик, изобретатель. Для покушения на императора России Александра II изобрёл летательные снаряды с «летучим студнем», за что был арестован и приговорён к смертной казни.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_27_kibalchich.jpg" alt="Николай Иванович Кибальчич" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_27_kibalchich.jpg</code>.</div>
+                        <div class="doc-image-caption">Рис. 27. Николай Иванович Кибальчич.</div>
+                    </div>
+
+                    <blockquote>
+                        <p><em>«Находясь в заключении за несколько дней до своей смерти, я пишу этот проект. Я верю в осуществимость моей идеи и эта вера поддерживает меня в моем ужасном положении. Если же моя идея после тщательного обсуждения учеными специалистами будет признана исполнимой, то я буду счастлив тем, что окажу огромную услугу Родине и человечеству».</em></p>
+                    </blockquote>
+
+                    <p>Проект датирован 23 марта 1881 года. На следующий день Николай Кибальчич передал его своему адвокату В. Н. Герарду. Совет учёных не проводил экспертизу проекта. Записи отправили в секретный архив.</p>
+                    <p>Про свой аппарат он написал: <em>«Если цилиндр поставлен закрытым дном кверху, то при известном давлении газов <...> цилиндр должен подняться наверх»</em>.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_28_kibalchich_project.jpg" alt="Проект Н. И. Кибальчича" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_28_kibalchich_project.jpg</code>.</div>
+                        <div class="doc-image-caption">Рис. 28. Проект Н. И. Кибальчича.</div>
+                    </div>
+
+                    <p>Какая же сила применима к воздухоплаванию? — ставит вопрос Н. И. Кибальчич и отвечает: — Такой силой, по моему мнению, являются медленно горящие взрывчатые вещества... Применить энергию газов, образующихся при воспламенении взрывчатых веществ, к какой-либо продолжительной работе возможно только под тем условием, если та громадная энергия, которая образуется при горении взрывчатых веществ, будет образовываться не сразу, а в течение более или менее продолжительного промежутка времени. Если мы возьмём фунт зернистого пороху, вспыхивающего при зажигании мгновенно, спрессуем его под большим давлением в форму цилиндра, то увидим, что горение не сразу охватит цилиндр, а будет распространяться довольно медленно от одного конца к другому и с определённой скоростью... На этом свойстве прессованного пороха основано устройство боевых ракет.</p>
+
+                    <p>В мае 1903 года русский учёный Константин Эдуардович Циолковский публикует статью «Исследование мировых пространств реактивными приборами», где представлена конструкция космической ракеты, действующей на жидкостном реактивном двигателе.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_29_tsiolkovsky.png" alt="Константин Эдуардович Циолковский" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_29_tsiolkovsky.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 29. Константин Эдуардович Циолковский.</div>
+                    </div>
+
+                    <p>К. Э. Циолковский не только разработал теорию движения космических ракет, но и вывел математическую формулу для расчёта скорости ракеты.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_30_tsiolkovsky_projects.jpg" alt="Проекты К. Э. Циолковского" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_30_tsiolkovsky_projects.jpg</code>.</div>
+                        <div class="doc-image-caption">Рис. 30. Проекты К. Э. Циолковского.</div>
+                    </div>
+
+                    <h4>Устройство и принцип работы ракеты</h4>
+                    <p>Существуют ракеты для вывода в космос искусственных спутников (обеспечивающих мобильную связь, навигацию, мониторинг поверхности Земли и т. п.), автоматических межпланетных станций и т. д.</p>
+                    <p>Большую часть ракеты занимает топливо и окислитель. Для сгорания топлива необходим кислород (как известно в космосе его нет), поэтому для поддержания горения и необходим окислитель. Насосы подают топливо и окислитель в камеру сгорания. Горение топлива создаёт горячий газ с большим значением давления и скорости. Сопло ракеты направлено так, что газ вырывается противоположно направления её движения, тем самым придавая импульс ракете.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_31_rocket_launch.jpg" alt="Изображение запуска ракеты" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_31_rocket_launch.jpg</code>.</div>
+                        <div class="doc-image-caption">Рис. 31. Изображение запуска ракеты.</div>
+                    </div>
+
+                    <p>Это можно показать с помощью закона сохранения импульса. Для упрощения расчёта параметров полёта не учитывают силы земного притяжения. Начальный импульс ракеты до старта равен нулю. Поэтому суммарный импульс движущейся ракеты и испускаемого газа тоже равен нулю. Это возможно только в противоположно направленном движении оболочки ракеты и струи газа:</p>
+                    <div class="formula-block">p<sub>оболочки</sub> = p<sub>газа</sub></div>
+                    <p>или</p>
+                    <div class="formula-block">m<sub>оболочки</sub> * V<sub>оболочки</sub> = m<sub>газа</sub> * V<sub>газа</sub></div>
+                    <p>Получим следующее. Скорость оболочки прямо пропорциональна скорости газа, выходящего из сопла и обратно пропорциональна массе оболочки:</p>
+                    <div class="formula-block">V<sub>оболочки</sub> = (m<sub>газа</sub> * V<sub>газа</sub>) / m<sub>оболочки</sub></div>
+
+                    <h4>Многоступенчатые ракеты</h4>
+                    <p>Современные ракеты имеют многоступенчатое строение. Для дальних полётов применяется поэтапное использование топлива.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_mom_32_rocket_stages.jpg" alt="Изображение ступеней ракеты" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_mom_32_rocket_stages.jpg</code>.</div>
+                        <div class="doc-image-caption">Рис. 32. Изображение ступеней ракеты.</div>
+                    </div>
+
+                    <p>При сгорании топлива в первой ступени она оказывается не нужной и отстреливается. После этого начинает работать двигатель второй ступени, расходуя свое топливо и окислитель. Затем отбрасывается и вторая ступень ракеты. Такой процесс позволяет экономить топливо, т. к. масса ракеты при отбрасывании ступени уменьшается. Это, в свою очередь, позволяет увеличить скорость ракеты (см. формулы).</p>
+                    
+                    <p><strong>Полёт трёхступенчатой ракеты:</strong></p>
+                    <ol>
+                        <li>Двигатель 1 ступени работает около 3 минут. За это время ракета пролетает более 50 км.</li>
+                        <li>Израсходовав всё топливо, 1 ступень отделяется от ракеты, и начинает работать двигатель 2 ступени (около 2 минут).</li>
+                        <li>3 ступень работает примерно 12 минут и выводит спутник на околоземную орбиту на высоту около 320 км.</li>
+                    </ol>
+                    <p>Если полёт запланирован в один конец, то третья ступень используется для ускорения летательного аппарата. Для летательных аппаратов с посадкой на Землю последняя ступень сохраняется для торможения в атмосфере планеты. Двигатели разворачивают соплом в направлении падения. Импульс горящего газа, направленный против скорости движения, оказывает тормозящее действие. Скорость посадки снижается.</p>
+
+                    <!-- ЧАСТЬ 6: МЕХАНИЧЕСКАЯ РАБОТА -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">6. Механическая работа</h3>
+                    <p>Совершённая работа равна изменению энергии, потраченной на совершение работы.</p>
+                    <p>Величину работы можно определить, вычитая из конечного значения энергии начальное значение энергии.</p>
+                    <div class="formula-block">A = E<sub>конеч.</sub> − E<sub>нач.</sub>, или A = &Delta;E</div>
+                    <div class="formula-note">где A — работа (Дж); E — энергия (Дж).</div>
+
+                    <p>Работу, как и энергию, измеряют в джоулях (Дж).</p>
+
+                    <p>Если энергия тела увеличивается, тогда общая совершённая работа является <strong>положительной</strong>.</p>
+                    <p><em>Пример:</em> когда автомобиль начинает двигаться, его кинетическая энергия увеличивается. Значит, двигатель автомобиля совершает положительную работу.</p>
+                    <p>Если энергия тела уменьшается, тогда общая совершённая работа является <strong>отрицательной</strong>.</p>
+                    <p><em>Пример:</em> когда автомобиль свободно катится по горизонтальной поверхности, его скорость и кинетическая энергия уменьшаются. Значит, сила сопротивления совершает отрицательную работу.</p>
+
+                    <p>В физике рассматривают физическую работу, которая связана с перемещением тел. Если при прямолинейном движении на тело действует неизменная сила, направленная в сторону движения тела, тогда работа, произведённая приложенной силой, равна произведению величины силы на величину проделанного перемещения.</p>
+                    <p>Если к телу приложена сила под вертикальным углом к направлению движения тела, как это показано на рисунке, тогда величина совершённой работы зависит от:</p>
+                    <ol>
+                        <li>величины приложенной силы (F), которая совершает работу;</li>
+                        <li>расстояния (l), на которое перемещается тело;</li>
+                        <li>угла &alpha; между направлением действия силы и направлением движения тела.</li>
+                    </ol>
+                    <p>Работа определяется по формуле:</p>
+                    <div class="formula-block">A = F · l · cos&alpha;</div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_01_angle.svg" alt="Сила под углом" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_01_angle.svg</code>.</div>
+                        <div class="doc-image-caption">Рис. 33. Сила под углом к направлению движения.</div>
+                    </div>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Если сила направлена параллельно направлению перемещения, тогда угол &alpha; = 0, а косинус угла &alpha; равен 1. В этом случае формула упрощается:</p>
+                        <div class="formula-block">A = F · l</div>
+                        <p>Если проделанный путь является прямолинейным, тогда вместо пути l можно использовать перемещение (s). В этом случае формула для расчёта работы приобретает такой вид:</p>
+                        <div class="formula-block">A = F · s</div>
+                    </div>
+
+                    <p>На трёх рисунках изображены случаи, когда направление силы и направление движения тела совпадают.</p>
+                    <p><em>1. Действие силы и направление движения тела направлены горизонтально.</em> Например, автомобиль едет по прямому пути, и сила тяги автомобиля приложена в том же направлении.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_02_parallel.svg" alt="Сила параллельна движению" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_02_parallel.svg</code>.</div>
+                        <div class="doc-image-caption">Рис. 34. Сила параллельна направлению движения.</div>
+                    </div>
+
+                    <p><em>2. Действие силы и направление движения тела направлены под одинаковым углом наклона по отношению к горизонту.</em> Например, автомобиль едет в гору.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_03_uphill.svg" alt="Движение в гору" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_03_uphill.svg</code>.</div>
+                        <div class="doc-image-caption">Рис. 35. Движение «в гору».</div>
+                    </div>
+
+                    <p><em>3. Действие силы и направление движения тела направлены вертикально.</em> Например, груз поднимается вверх, и сила упругости троса тоже направлена вверх. В этом случае величину совершённой работы можно рассчитать также по формуле:</p>
+                    <div class="formula-block">A = m · g · h</div>
+                    <div class="formula-note">где m — масса тела, g — ускорение свободного падения, h — высота подъёма тела над поверхностью земли.</div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_04_upward.svg" alt="Движение вверх" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_04_upward.svg</code>.</div>
+                        <div class="doc-image-caption">Рис. 36. Движение вверх.</div>
+                    </div>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Если направление действия силы противоположно направлению движения, тогда совершаемая этой силой работа отрицательна.</p>
+                        <p>Работа отрицательна, так как функция косинус в интервале значений угла 90–180° является отрицательной. Таким образом, любая работа, совершённая силой трения или сопротивления, является отрицательной.</p>
+                    </div>
+
+                    <p><em>Пример:</em> когда автомобиль едет с равномерной скоростью по прямой дороге, как это показано на рисунке, работа силы тяги автомобиля является положительной, а работа силы сопротивления равна по величине, но является отрицательной. В результате этого кинетическая и потенциальная энергия автомобиля остаются неизменными.</p>
+                    <p>Если сила направлена прямо противоположно направлению движения, тогда работу вычисляют по формуле:</p>
+                    <div class="formula-block">A = −F · l</div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_05_car.svg" alt="Автомобиль" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_05_car.svg</code>.</div>
+                        <div class="doc-image-caption">Рис. 37. Автомобиль.</div>
+                    </div>
+
+                    <!-- ЧАСТЬ 7: РАБОТА СИЛЫ ТЯЖЕСТИ -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">7. Работа силы тяжести</h3>
+                    <p>Для определения работы силы тяжести рассмотрим два случая:</p>
+                    <ul>
+                        <li>мяч летит вниз с некоторой высоты;</li>
+                        <li>мяч бросают вверх с некоторой высоты.</li>
+                    </ul>
+
+                    <h4>Случай 1. Мяч летит с некоторой высоты вниз</h4>
+                    <p>Схематично изобразим ситуацию (см. рис. 38).</p>
+                    <p>Пусть:</p>
+                    <ul>
+                        <li>h<sub>1</sub> — координата мячика в начале наблюдения;</li>
+                        <li>h<sub>2</sub> — координата мячика в последующий момент времени;</li>
+                        <li>s = h<sub>1</sub> − h<sub>2</sub> — модуль перемещения мяча;</li>
+                        <li><span class="vec">F</span><sub>тяж</sub> = m<span class="vec">g</span> — сила тяжести, которая действует на протяжении всего движения (полёта) мяча и направлена вниз.</li>
+                    </ul>
+                    <p>Запишем формулу механической работы в общем виде:</p>
+                    <div class="formula-block">A = F · s · cos&alpha;</div>
+                    <p>Проанализируем её с учётом случая 1:</p>
+                    <ul>
+                        <li>вектор силы тяжести и вектор перемещения совпадают — направлены вниз;</li>
+                        <li>угол между вектором силы и перемещения равен нулю: &angle;&alpha; = 0°;</li>
+                        <li>косинус угла равен 1: cos 0° = 1.</li>
+                    </ul>
+                    <p>Внесём все данные в формулу работы силы тяжести и получим следующее:</p>
+                    <div class="formula-block">A = m · g · (h<sub>1</sub> − h<sub>2</sub>) = m · g · h<sub>1</sub> − m · g · h<sub>2</sub></div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_06_gravity_down.png" alt="Мяч летит с некоторой высоты вниз" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_06_gravity_down.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 38. Мяч летит с некоторой высоты вниз.</div>
+                    </div>
+
+                    <h4>Случай 2. Мяч бросают с некоторой высоты вверх</h4>
+                    <p>Схематично изобразим ситуацию (см. рис. 39).</p>
+                    <p>Повторяя рассуждения, как и в случае 1, замечаем, что модуль перемещения s = h<sub>2</sub> − h<sub>1</sub>.</p>
+                    <p>Проанализируем формулу расчёта механической работы для второго случая:</p>
+                    <ul>
+                        <li>вектор силы тяжести и вектор перемещения не совпадают: вектор силы направлен вниз, вектор перемещения направлен вверх;</li>
+                        <li>угол между вектором силы и перемещения равен 180°: &angle;&alpha; = 180°;</li>
+                        <li>косинус угла равен −1: cos 180° = −1.</li>
+                    </ul>
+                    <p>Вносим данные в формулу и получаем:</p>
+                    <div class="formula-block">A = m · g · (h<sub>2</sub> − h<sub>1</sub>) · (−1) = m · g · h<sub>1</sub> − m · g · h<sub>2</sub></div>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_07_gravity_up.png" alt="Мяч бросают с некоторой высоты вверх" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_07_gravity_up.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 39. Мяч бросают с некоторой высоты вверх.</div>
+                    </div>
+
+                    <p>Формулы работы силы тяжести, полученные для первого и второго случаев, совпадают, что позволяет записать следующее:</p>
+                    <div class="formula-block">A = m · g · h<sub>1</sub> − m · g · h<sub>2</sub></div>
+
+                    <p>Можно показать, что работа силы тяжести не зависит от формы траектории. Для этого рассмотрим рисунок ниже (см. рис. 40). С высоты h<sub>1</sub> на высоту h<sub>2</sub> мяч может переместиться несколькими способами: летя вертикально вниз (рис. 40а), скатываясь по наклонной плоскости (рис. 40б), двигаясь по кривой (рис. 40в).</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_08_trajectories.png" alt="Примеры форм траекторий движения мяча" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_08_trajectories.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 40. Пример форм траектории движения мяча.</div>
+                    </div>
+
+                    <p>Работа силы тяжести определяется только начальным и конечным положениями тела, то есть <strong>не зависит от формы траектории</strong> тела. При перемещении тела по замкнутой траектории работа силы тяжести равна нулю.</p>
+                    
+                    <p><strong>Консервативные силы</strong> — силы, работа которых не зависит от формы траектории точки приложения силы и по замкнутой траектории равна нулю.</p>
+
+                    <div class="medical-box" style="background-color: #FFF3E0; border-left-color: #FF9800;">
+                        <h3 style="color: #E65100;">💡 Обрати внимание!</h3>
+                        <p>Сила тяжести не выполняет работу, когда тело перемещается в горизонтальной плоскости. В таких случаях высота тела относительно земли остаётся постоянной.</p>
+                        <p><em>Пример:</em> сила тяжести, действующая на птицу, самолёт, стрелу, летящие горизонтально, не совершает работы, или A = 0.</p>
+                    </div>
+
+                    <!-- ЧАСТЬ 8: РАБОТА СИЛЫ УПРУГОСТИ -->
+                    <h3 style="margin-top: 50px; color: #005B96; border-bottom: 2px solid #005B96;">8. Работа силы упругости</h3>
+                    <p>Работу силы упругости можно определить только при действии упругой деформации.</p>
+                    <p>Для определения особенностей работы силы упругости рассмотрим следующие случаи:</p>
+                    <ul>
+                        <li>после сжатия (действия внешней силы) пружина с грузом возвращается в исходное положение, когда отсутствует деформация;</li>
+                        <li>после растяжения (действия внешней силы) пружина с грузом возвращается в исходное положение, когда отсутствует деформация.</li>
+                    </ul>
+
+                    <h4>Случай 1. Пружина с грузом после сжатия возвращается в исходное положение</h4>
+                    <p>Схематично покажем на рисунке два положения груза на пружине при отсутствии внешней силы и движении пружины с грузом в недеформированное состояние (рис. 41). Отметим, что вектор силы упругости совпадает с направлением перемещения груза. Кроме того, F<sub>упр1</sub> > F<sub>упр2</sub>, так как пружина в первом положении сильнее деформирована, чем во втором положении. Модуль удлинения пружины в первом положении больше, чем во втором положении, т. е. x<sub>1</sub> > x<sub>2</sub>. Точка O означает положение пружины в недеформированном состоянии.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_09_elastic_1.png" alt="Положения груза на пружине (1)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_09_elastic_1.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 41. Положения груза на пружине (1).</div>
+                    </div>
+
+                    <p>Работу силы упругости удобнее продемонстрировать, используя график зависимости силы упругости от модуля удлинения пружины (рис. 42).</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_10_elastic_graph.png" alt="График зависимости силы упругости от длины пружины" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_10_elastic_graph.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 42. График зависимости силы упругости от длины пружины.</div>
+                    </div>
+
+                    <p>Работа силы упругости есть площадь, ограниченная фигурой. На рисунке фигура закрашена цветом. Она представляет собой трапецию. Площадь трапеции находится как полусумма оснований, умноженная на высоту трапеции.</p>
+                    <p>Внимательно рассмотрим фигуру. Длинами оснований трапеции являются отрезки, соответствующие значениям сил упругости F<sub>упр1</sub> и F<sub>упр2</sub>, высота призмы есть разность значений x<sub>1</sub> и x<sub>2</sub>.</p>
+                    <p>Если сила упругости считается по формуле: F<sub>упр1</sub> = kx<sub>1</sub>, F<sub>упр2</sub> = kx<sub>2</sub>, где k — коэффициент жёсткости пружины, тогда можно записать формулу работы силы упругости:</p>
+                    <div class="formula-block">A = ( (kx<sub>1</sub> + kx<sub>2</sub>) / 2 ) · (x<sub>1</sub> − x<sub>2</sub>) = (kx<sub>1</sub><sup>2</sup> / 2) − (kx<sub>2</sub><sup>2</sup> / 2)</div>
+
+                    <h4>Случай 2. Пружина с грузом после растяжения возвращается в исходное положение</h4>
+                    <p>Как и в первом случае, покажем на рисунке два положения груза на пружине при отсутствии внешней силы и движении пружины с грузом в недеформированное состояние (рис. 43). В этом случае вектор силы упругости также совпадает с направлением перемещения груза. Кроме того, F<sub>упр1</sub> > F<sub>упр2</sub>, так как пружина в первом положении сильнее деформирована, чем во втором положении. Модуль удлинения пружины в первом положении больше, чем во втором положении, т. е. x<sub>1</sub> > x<sub>2</sub>. Точка O означает положение пружины в недеформированном состоянии.</p>
+
+                    <div class="doc-image-container">
+                        <img src="./img/img_work_11_elastic_2.png" alt="Положения груза на пружине (2)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; padding: 20px; background: #fff3cd; color: #856404; border-radius: 5px;">Сохраните как <code>img_work_11_elastic_2.png</code>.</div>
+                        <div class="doc-image-caption">Рис. 43. Положения груза на пружине (2).</div>
+                    </div>
+
+                    <p>График зависимости силы упругости от модуля удлинения пружины будет схож с таковым в первом случае, тогда формула работы силы упругости принимает тот же вид, что и в первом случае:</p>
+                    <div class="formula-block">A = (kx<sub>1</sub><sup>2</sup> / 2) − (kx<sub>2</sub><sup>2</sup> / 2)</div>
+                    <p>В обоих случаях получили одинаковую формулу:</p>
+                    <div class="formula-block">A = (kx<sub>1</sub><sup>2</sup> / 2) − (kx<sub>2</sub><sup>2</sup> / 2)</div>
+                    <p><strong>Сила упругости является консервативной.</strong></p>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА 3: ДОМАШНЕЕ ЗАДАНИЕ -->
+            <div id="tab-homework" class="tab-content">
+                <div class="content-section">
+                    <h2>📝 Домашнее задание</h2>
+                    <p>Решите задачи в тетради и перенесите ответы в форму.</p>
+
+                    <h3>Тест</h3>
+                    <div class="quiz-question">
+                        <p>1. Как изменится импульс тела, если его скорость увеличится в 2 раза?</p>
+                        <label class="quiz-option"><input type="radio" name="q1" value="a"> Увеличится в 2 раза</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="b"> Уменьшится в 2 раза</label>
+                        <label class="quiz-option"><input type="radio" name="q1" value="c"> Не изменится</label>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p>2. Какая система тел называется замкнутой?</p>
+                        <label class="quiz-option"><input type="radio" name="q2" value="a"> На которую действуют внешние силы</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="b"> На которую не действуют внешние силы (или их действие скомпенсировано)</label>
+                        <label class="quiz-option"><input type="radio" name="q2" value="c"> Которая состоит из двух и более тел</label>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p>3. В каком случае работа силы равна нулю?</p>
+                        <label class="quiz-option"><input type="radio" name="q3" value="a"> Если сила перпендикулярна перемещению</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="b"> Если сила направлена вдоль перемещения</label>
+                        <label class="quiz-option"><input type="radio" name="q3" value="c"> Если сила направлена против перемещения</label>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p>4. Зависит ли работа силы тяжести от формы траектории?</p>
+                        <label class="quiz-option"><input type="radio" name="q4" value="a"> Да, зависит</label>
+                        <label class="quiz-option"><input type="radio" name="q4" value="b"> Нет, не зависит</label>
+                        <label class="quiz-option"><input type="radio" name="q4" value="c"> Зависит только для криволинейных траекторий</label>
+                    </div>
+
+                    <h3>Задачи</h3>
+                    <div class="task-box" style="background-color: #fffaf5; border-left-color: #FF9800;">
+                        <ol>
+                            <li><strong>Задача 1.</strong> Найдите импульс тела массой 5 кг, движущегося со скоростью 4 м/с.</li>
+                            <li><strong>Задача 2.</strong> Мяч массой 0,5 кг летит со скоростью 10 м/с. Игрок ловит его. Найдите изменение импульса мяча.</li>
+                            <li><strong>Задача 3.</strong> Два шара массами 2 кг и 3 кг движутся навстречу друг другу со скоростями 2 м/с и 1 м/с. Найдите скорость шаров после абсолютно неупругого удара.</li>
+                            <li><strong>Задача 4.</strong> Ракета массой 1000 кг стартует с Земли. Какую скорость приобретет ракета, если масса мгновенно выброшенных газов составляет 100 кг, а скорость их выброса 500 м/с?</li>
+                            <li><strong>Задача 5.</strong> Ящик тянут по горизонтальной поверхности с силой 100 Н под углом 30° к горизонту. Перемещение составило 5 м. Найдите работу силы тяги.</li>
+                            <li><strong>Задача 6.</strong> Человек поднимает груз массой 10 кг на высоту 2 м. Какую работу он совершает? (g = 10 м/с²).</li>
+                            <li><strong>Задача 7.</strong> Мяч массой 0,2 кг падает с высоты 5 м на землю. Какую работу совершает сила тяжести? (g = 10 м/с²).</li>
+                            <li><strong>Задача 8.</strong> Пружина жёсткостью 200 Н/м сжата на 5 см. Какую работу совершит сила упругости при возвращении пружины в недеформированное состояние?</li>
+                        </ol>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="ВАША_ССЫЛКА_НА_ФОРМУ_ЗСИ" target="_blank" rel="noopener" class="google-form-btn">
+                            📤 Сдать домашнее задание
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-nav">
+            <a href="./dynamics.html" class="btn-nav">← Назад: Динамика</a>
+            <a href="./molecular.html" class="btn-nav secondary">Следующая тема: Молекулярная физика →</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="./index.html">Главная</a> |
+            <a href="./materials.html">Материалы (Практика)</a> |
+            <a href="#">Учебник Мякишева 10-11 класс</a>
+        </div>
+        <p>© 2023 ГБПОУ «Свердловский областной медицинский колледж». Все права защищены.</p>
+    </footer>
+
+    <button id="install-pwa-btn" class="install-pwa-btn">📲 Установить приложение</button>
+    <script src="./js/app.js"></script>
+</body>
+</html>
