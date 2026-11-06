@@ -1,4 +1,4 @@
-const CACHE_NAME = 'somk-physics-v3';
+const CACHE_NAME = 'somk-physics-v4';
 const URLS_TO_CACHE = [
     './',
     './index.html',
